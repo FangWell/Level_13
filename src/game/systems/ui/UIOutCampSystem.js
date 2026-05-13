@@ -682,6 +682,7 @@
 				var hasUnlockedTrade = this.hasUpgrade(GameGlobals.upgradeEffectsHelper.getUpgradeToUnlockBuilding(improvementNames.tradepost));
 				$("#in-demographics-level-population .value").text(levelComponent.populationFactor * 100 + "%");
 				$("#in-demographics-level-danger .value").text(levelComponent.raidDangerFactor * 100 + "%");
+				UIConstants.updateCalloutContent("#in-demographics-level-danger", "Level raid danger is a multiplier for raids on this level. 100% is baseline.");
 				$("#in-demographics-trade-network").toggle(hasUnlockedTrade);
 				if (hasUnlockedTrade) {
 					var hasAccessToTradeNetwork = GameGlobals.resourcesHelper.hasAccessToTradeNetwork(this.playerLocationNodes.head.entity);
