@@ -3798,6 +3798,39 @@ var cnPostfix = {
     'stream': '小溪',
     'drinking fountain': '饮水机',
     'trade partner': '贸易伙伴',
+
+    // ===== 补充翻译（批次3） =====
+    // 场景描述
+    'A dark alley between two storehouses with some massive workshops on either side.': '两个仓库之间的黑暗小巷，两侧分布着一些庞大的车间。',
+    'A dark alley surrounded (and in parts, covered) by massive dwellings that have been abandoned for some time': '一条黑暗的小巷，被大型废弃已久的住宅所环绕（部分区域被覆盖）',
+    'A dark alley surrounded (and in parts, covered) by massive dwellings that have been abandoned for some time.': '一条黑暗的小巷，被大型废弃已久的住宅所环绕（部分区域被覆盖）。',
+    'A gloomy corridor with scattered trash from long-gone inhabitants': '一条阴暗的走廊，散落着早已离去的居民留下的垃圾',
+    'A gloomy corridor with scattered trash from long-gone inhabitants.': '一条阴暗的走廊，散落着早已离去的居民留下的垃圾。',
+    'A low maintenance passage with a few large unidentifiable ruins looming over it.': '一条维护较少的通道，上方悬着几处无法辨认的大型废墟。',
+    'A low passage packed so full with massive huts and broken elevators that there is barely enough space to pass through.': '一条低矮的通道里塞满了巨大的棚屋和损坏的电梯，几乎没有足够的空间通过。',
+    'A narrow alley with long-abandoned buildings covered in strange moss': '一条狭窄的小巷，里面有被奇异苔藓覆盖的久已废弃的建筑物',
+    'A narrow alley with long-abandoned buildings covered in strange moss.': '一条狭窄的小巷，里面有被奇异苔藓覆盖的久已废弃的建筑物。',
+    'A passage in front of what looks like a blocky power plant.': '一条通道，位于一个看起来笨重的发电厂前方。',
+    'A small street between some monolithic apartment towers.': '一条小街，夹在几栋庞大的公寓塔楼之间。',
+    'Gloomy commercial alley': '阴暗的商业小巷',
+    'Some kind of an industrial complex with several narrow passages this way and that.': '某种工业建筑群，四处有几条狭窄通道。',
+    // 区域描述（前缀型，以 "It's quite" 结尾）
+    'This area is occupied by urban pests and aggressive bots. It\'s quite': '该区域被城市害虫和侵略性机器人占据。相当',
+    'This area is overrun with goshawks. It\'s quite': '该区域被苍鹰侵占。相当',
+    // 物品损坏（特定物品名处理）
+    '损坏了一个物品（T-shirt）。': '损坏了一个物品（T恤）。',
+    // 行动/事件
+    'attacked while scouting': '侦察时遭到袭击',
+    'Blueprint (Trading Post': '蓝图（贸易站',
+    'Build [Trading post]': '建造 [贸易站]',
+    'leather jacket': '皮夹克',
+    'Researched Trading Post.': '已研究贸易站。',
+    'Researched Warm Clothing.': '已研究保暖衣物。',
+    'Scouted a market.': '侦察了一个市场。',
+    'Scouted a warehouse.': '侦察了一个仓库。',
+    'scout locale i': '侦察区域 I',
+    'tentacle sundew': '触手茅膏菜',
+    'Went scavenging. Found a source of duct tape.': '去拾荒了。找到了一个胶带的来源。',
 }
 
 //需排除的，正则匹配
@@ -3867,7 +3900,10 @@ var cnExcludeWhole = [
     /^e([\d\.]+)e([\d\.,]+)$/,
     /^x([\d\.]+)e([\d\.,]+)$/,
     /^([\d\.]+)e([\d\.,]+)x$/,
-    /^[\u4E00-\u9FA5]+$/
+    /^[\u4E00-\u9FA5]+$/,
+    /^[\u4E00-\u9FA5，。、""''（）【】！？：；…—]/, // 以中文字符或中文标点开头，视为已翻译
+    /^T恤/, // T恤开头的物品描述（部分翻译结果）
+    /^\d+\/\d+ \($/, // 计数型前缀，如 "10/12 ("
 ];
 var cnExcludePostfix = [
     /:?\s*x?\d+(\.\d+)?(e[+\-]?\d+)?\s*$/, //12.34e+4
@@ -4086,6 +4122,42 @@ var cnRegReplace = new Map([
 	[/^\+(.+), poison protection  \+$/, '\+$1, 毒防 \+'],
 	[/^\+(\d+), radiation protection  \+(\d+), poison protection  \+$/, '\+$1，辐射防护\+$2，毒防护+'],
 	[/^ \(防御  \+(\d+), warmth  \+(\d+), radiation protection  \+(\d+), 毒防 \+$/, ' \(防御 \+$1, 保暖 \+$2, 辐射防御 \+$3, 毒防 \+'],
+
+    // 坐标格式（无楼层编号），如 "5E 1S." 或 "5E 1S"
+    [/^(\d+)(E|W) (\d+)(N|S)\.?$/, function(match, x, xd, y, yd) {
+        var dirs = { E: '东', W: '西', N: '北', S: '南' };
+        return x + (dirs[xd] || xd) + ' ' + y + (dirs[yd] || yd);
+    }],
+    // 寒冷状态（"time left" 变体，区别于 "time to full"）
+    [/^Cold \(health \-(.+)\%, time left$/, '寒冷（生命值\-$1\%，剩余时间'],
+    // 骨折伤势（拇指）
+    [/^Broken thumb \((minor|medium|severe)\) \(health -$/, function(match, sev) {
+        var sevs = { minor: '轻微', medium: '中度', severe: '重度' };
+        return '拇指骨折（' + (sevs[sev] || sev) + '）（生命值 -';
+    }],
+    // 碎石方向提示（前缀式）
+    [/^debris \((north|south|east|west|north-east|south-east|north-west|south-west)$/, function(match, dir) {
+        var dirs = { 'north': '北方', 'south': '南方', 'east': '东方', 'west': '西方',
+            'north-east': '东北方向', 'south-east': '东南方向', 'north-west': '西北方向', 'south-west': '西南方向' };
+        return '碎石（' + (dirs[dir] || dir);
+    }],
+    // 单句或多句"碎石已清除"（items 40-42）
+    [/^(Debris to the (?:north|south|east|west|north-east|south-east|north-west|south-west) has been cleared away\. *)+$/, function(match) {
+        var dirs = { 'north': '北方', 'south': '南方', 'east': '东方', 'west': '西方',
+            'north-east': '东北方向', 'south-east': '东南方向', 'north-west': '西北方向', 'south-west': '西南方向' };
+        return match.replace(/Debris to the (north|south|east|west|north-east|south-east|north-west|south-west) has been cleared away\./g, function(m, dir) {
+            return (dirs[dir] || dir) + '的碎石已被清除。';
+        }).trim();
+    }],
+    // "here (N). Debris to the X..." 组合（items 44-47）
+    [/^here \((\d+)\)\. (Debris to the .+)$/, function(match, n, rest) {
+        var dirs = { 'north': '北方', 'south': '南方', 'east': '东方', 'west': '西方',
+            'north-east': '东北方向', 'south-east': '东南方向', 'north-west': '西北方向', 'south-west': '西南方向' };
+        var translated = rest.replace(/Debris to the (north|south|east|west|north-east|south-east|north-west|south-west) has been cleared away\./g, function(m, dir) {
+            return (dirs[dir] || dir) + '的碎石已被清除。';
+        });
+        return '这里（' + n + '）。' + translated.trim();
+    }],
 
 	// 地点名称：动态翻译"修饰词 + 名词"组合（如 abandoned factory、neglected laboratory）
 	[/^(ruined|damaged|abandoned|neglected|empty|pristine|destroyed|derelict|flourishing|ancient|defunct|old|quiet|sturdy|recently built|well-kept|overgrown|foreign) (factory|office|house|laboratory|grove|market|shopping center|control unit|network switch|water tower|firehouse|station|train depot|sewer|warehouse|hut|library|farm|building|camp)$/, function(match, mod, noun) {
