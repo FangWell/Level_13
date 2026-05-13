@@ -683,6 +683,7 @@ var cnItems = {
     'Some sort of a maintenance corridor between two vast factories with barely enough space to walk.': '两家工厂之间的维修走廊，几乎没有足够的空间行走。',
     'A crumbling street behind a maintenance center, the low ceiling criss-crossed by old wires and ducts.': '维修中心后面一条摇摇欲坠的街道，低矮的天花板上纵横交错着旧电线和管道。',
     'Increases with camp size and decreases with camp defences.': '随营地规模增加而增加，随营地防御而减少。',
+    'Level raid danger is a multiplier for raids on this level. 100% is baseline.': '等级突袭危险是该层突袭强度的倍率。100% 为基准值。',
     'Missing pieces.': '丢失的碎片。',
     'crumbling industrial square': '摇摇欲坠的工业广场',
     'A wide square with a ruined factory on one side and what looks like the remains of an old storehouse on the other.': '一个宽阔的广场，一边是一个废弃的工厂，另一边看起来像是一个旧仓库的遗迹。',
@@ -1582,6 +1583,8 @@ var cnItems = {
     'Resources found by scavenging: food (scarce': '通过清理可能发现的资源：食物（稀缺',
     'Resources found by scavenging: food (scarce), metal (scarce': '通过清理可能发现的资源：食物（稀缺），金属（稀有',
     'Scouted the area. Found a leaking water pipe.': '侦察该地区。 发现漏水的水管。',
+    'Researched Warm Clothing.': '研究保暖衣物。',
+    'Scouted a market.': '侦察了一处市场。',
     'Scouted the shop.': '侦察商店。',
     'You have not scouted this sector yet. A group of pests on the east has been defeated.': '您尚未搜索此区块。 东部的一群害虫被击败了。',
     'You have not scouted this sector yet. A group of pests on the south has been defeated.': '您尚未搜索此区块。 南部的一组害虫已被击败。',
@@ -3391,6 +3394,12 @@ var cnPrefix = {
     "improved workers: ": "改善工人：",
     "unlocked items: ": "解锁物品：",
     "unlocked building projects: ": "解锁建筑项目：",
+    "Unlocked building projects: [Staircase Down], [Staircase Up]": "解锁建筑项目：[楼梯向下]，[楼梯向上]",
+    "Build [Staircase Down]": "修建[向下的楼梯]",
+    "There is already a building project in progress": "已有一个建筑项目正在进行",
+    "A statue is holding a crude sign saying there is": "一座雕像举着一块粗糙的牌子，上面写着这里有",
+    "A wide square with long-abandoned buildings covered in strange moss. Both": "一个宽阔的广场，长满奇怪苔藓的废弃建筑环绕其间。两侧都",
+    "to the south-east.": "在东南方。",
     "Population is decreasing on level ": "人口减少发生在层 ",
     "In party: ": "是否入队：",
     "Ability: scouting ": "能力：侦查 ",
@@ -3512,6 +3521,42 @@ var cnPrefix = {
     "A dark apartment complex littered with debris and garbage.": "一片黑暗的公寓区里散落着瓦砾和垃圾。",
     "A dark hall between two shopping malls with some massive shops on either side.": "一条黑暗的大厅夹在两座购物中心之间，两侧有几家巨大的商店。",
     "A dark street between some residential towers. There is a": "一条黑暗的街道位于几栋住宅高楼之间。这里有一处",
+    "A completely ruined slum passage": "一条完全毁坏的贫民窟通道",
+    "A completely ruined slum passage.": "一条完全毁坏的贫民窟通道。",
+    "A dark alley beneath a vast residential tower.": "一条黑暗的小巷，位于一座巨大的住宅塔楼下。",
+    "A dark alley packed so full with blocky apartments and broken elevators that there is barely enough space to pass through": "一条黑暗的小巷里塞满了方块状公寓和损坏的电梯，几乎没有可供通行的空间",
+    "A dark alley packed so full with blocky apartments and broken elevators that there is barely enough space to pass through.": "一条黑暗的小巷里塞满了方块状公寓和损坏的电梯，几乎没有可供通行的空间。",
+    "A dark alley packed so full with blocky huts and broken elevators that there is barely enough space to pass through": "一条黑暗的小巷里塞满了方块状棚屋和损坏的电梯，几乎没有可供通行的空间",
+    "A low passage packed so full with blocky shopping malls and broken elevators that there is barely enough space to pass through.": "一条低矮的通道里塞满了方块状购物中心和损坏的电梯，几乎没有可供通行的空间。",
+    "A narrow corridor with scattered trash from long-gone inhabitants": "一条狭窄的走廊，散落着早已离去居民留下的垃圾",
+    "A narrow corridor with scattered trash from long-gone inhabitants.": "一条狭窄的走廊，散落着早已离去居民留下的垃圾。",
+    "A narrow corridor with scattered trash from long-gone inhabitants. Both": "一条狭窄的走廊，散落着早已离去居民留下的垃圾。两侧都",
+    "A street outside a huge typical industrial complex": "一条街道位于一片典型而巨大的工业建筑群外",
+    "A street outside a huge typical industrial complex.": "一条街道位于一片典型而巨大的工业建筑群外。",
+    "A street outside a huge typical industrial complex. Both": "一条街道位于一片典型而巨大的工业建筑群外。两侧都",
+    "A wide area between some data centers.": "几座数据中心之间的一片宽阔区域。",
+    "An alley with multiple levels of passages crawling along the walls of the surrounding residential buildings.": "一条小巷中有多层通道沿着周围住宅建筑的墙面蜿蜒延伸。",
+    "An alley with multiple levels of passages crawling along the walls of the surrounding residential buildings. There is a": "一条小巷中有多层通道沿着周围住宅建筑的墙面蜿蜒延伸。这里有一个",
+    "Distance to camp: ?": "到营地的距离：？",
+    "Distance to passage": "到通路的距离",
+    "Entered Level 12. The streets are indifferent to your presence.": "进入第12层。街道对你的存在漠不关心。",
+    "Found a source of leather.": "发现了一处皮革来源。",
+    "Went scavenging. Found a source of leather.": "外出拾荒。发现了一处皮革来源。",
+    "Some kind of a maintenance complex with several narrow passages this way and that. Both": "某种维护设施建筑群，四周有多条狭窄通道。两侧都",
+    "Some sort of a commercial corridor between two vast shopping malls with barely enough space to walk.": "某种商业走廊位于两座巨大的购物中心之间，几乎只够步行通过。",
+    "Some sort of a commercial corridor between two vast shops with barely enough space to walk": "某种商业走廊位于两家巨大的商店之间，几乎只够步行通过",
+    "Some sort of a commercial corridor between two vast shops with barely enough space to walk.": "某种商业走廊位于两家巨大的商店之间，几乎只够步行通过。",
+    "Some sort of a maintenance corridor between two vast utility buildings with barely enough space to walk. Both": "某种维护走廊位于两座巨大的公共设施建筑之间，几乎只够步行通过。两侧都",
+    "Some sort of a slum corridor between two vast huts with barely enough space to walk": "某种贫民窟走廊位于两间巨大的棚屋之间，几乎只够步行通过",
+    "There is a a stairwell here.": "这里有一个楼梯井。",
+    "There is a market here that seems worth scouting.": "这里有一处市场，看起来值得侦察。",
+    "There is a warehouse here that seems worth scouting.": "这里有一处仓库，看起来值得侦察。",
+    "This level seems safe enough that it should be possible to find a spot for a camp.": "这一层看起来足够安全，应该可以找到地方建立营地。",
+    "You spot a few graffiti with arrows pointing south and words like 'safe' and 'shelter'": "你发现几处涂鸦，箭头指向南方，还写着“安全”和“庇护所”之类的词",
+    "You spot a few graffiti with arrows pointing south and words like 'safe' and 'shelter'.": "你发现几处涂鸦，箭头指向南方，还写着“安全”和“庇护所”之类的词。",
+    "clear debris": "清理废墟",
+    "Repair T-shirt": "修理T恤",
+    "Stumbled on some wrecked pipes. Broke 1 t-shirt.": "被一堆损坏的管道绊倒了。损坏了1件T恤。",
     "A spacious bridge over the level below with separate levels for tram tracks, utilities and pedestrians. Both": "下方楼层上方有一座宽阔桥梁，分层用于电车轨道、市政设施和行人。两者",
     "An area with some broken elevators and blocky public buildings. Both": "一片区域里有一些损坏的电梯和笨重的公共建筑。两者",
     "An ordinary area between some public buildings": "一片位于几座公共建筑之间的普通区域",
@@ -3568,6 +3613,10 @@ var cnPostfix = {
     "  ": "",
     " ": "",
     "\n": "",
+    ", poison prot": "，毒防",
+    ", radiation prot": "，辐射防护",
+    ", warmth": "，保暖",
+    ". Passage to the north-east is blocked by": "。通往东北方向的通道被",
     ", warmth  +": ", 保暖  +",
     ", speed -": ", 速度  +",
     "poison protection  +": "毒防  +",
@@ -3925,6 +3974,40 @@ var cnRegReplace = new Map([
     [/^A dark slum alley with a few large unidentifiable ruins looming over it\. Both$/, '一条黑暗的贫民窟小巷，上方隐约耸立着几处难以辨认的大型废墟。两者'],
     [/^A public area with a few typical buildings\. Both$/, '一片公共区域里有几座典型建筑。两者'],
     [/^A spacious area between two residential towers with some nondescript buildings on either side\.?$/, '两栋住宅高楼之间有一片宽敞区域，两侧分布着一些普通建筑。'],
+    [/^Stairwell  down repaired at (.+)\.$/, '在 $1 修复了向下的楼梯。'],
+    [/^(\d+)(E|W) (\d+)(N|S) L$/, function(match, x, xd, y, yd) {
+        var dirs = { E: '东', W: '西', N: '北', S: '南' };
+        return x + (dirs[xd] || xd) + ' ' + y + (dirs[yd] || yd) + ' 层';
+    }],
+        [/^(\d+)(E|W) (\d+)(N|S) level (\d+)\.$/, function(match, x, xd, y, yd, lv) {
+            var dirs = { E: '东', W: '西', N: '北', S: '南' };
+            return x + (dirs[xd] || xd) + ' ' + y + (dirs[yd] || yd) + ' 第' + lv + '层。';
+        }],
+    [/^Entered Level (\d+)\.(.+)$/, '进入第$1层。$2'],
+    [/^Passage to the (north|south|east|west|north-east|south-east|north-west|south-west) is blocked by( a)?$/, function(match, dir) {
+        var dirs = {
+            'north': '北方', 'south': '南方', 'east': '东方', 'west': '西方',
+            'north-east': '东北方向', 'south-east': '东南方向', 'north-west': '西北方向', 'south-west': '西南方向'
+        };
+        return '通往' + (dirs[dir] || dir) + '的通道被阻挡';
+    }],
+    [/^You have not scouted this sector yet\. Passage to the (north|south|east|west|north-east|south-east|north-west|south-west) is blocked by( a)?$/, function(match, dir) {
+        var dirs = {
+            'north': '北方', 'south': '南方', 'east': '东方', 'west': '西方',
+            'north-east': '东北方向', 'south-east': '东南方向', 'north-west': '西北方向', 'south-west': '西南方向'
+        };
+        return '你还没有侦察过这个区域。通往' + (dirs[dir] || dir) + '的通道被阻挡';
+    }],
+    [/^here \((\d+)\)\. Passage to the (north|south|east|west|north-east|south-east|north-west|south-west) is blocked by$/, function(match, n, dir) {
+        var dirs = {
+            'north': '北方', 'south': '南方', 'east': '东方', 'west': '西方',
+            'north-east': '东北方向', 'south-east': '东南方向', 'north-west': '西北方向', 'south-west': '西南方向'
+        };
+        return '这里（' + n + '）。通往' + (dirs[dir] || dir) + '的通道被阻挡';
+    }],
+    [/^Fight (\d+) \/$/, '战斗 $1 /'],
+    [/^attack ([\d\.]+) \| defence: ([\d\.]+) \| speed: ([\d\.]+) \| hp$/i, '攻击 $1 | 防御： $2 | 速度： $3 | 生命值'],
+    [/^攻击 ([\d\.]+) \| 防御： ([\d\.]+) \| 速度： ([\d\.]+) \| hp$/, '攻击 $1 | 防御： $2 | 速度： $3 | 生命值'],
     [/^here \((\d+)\)\. There is a$/, '这里（$1）。有一个'],
     [/^metal \(scarce\), rope \(scarce$/, '金属（少量），绳子（少量'],
     [/^Broke an item \((.+)\).$/, '损坏了一个物品（$1）。'],
