@@ -123,12 +123,13 @@ var cnItem = function (text, node) {
         }
     }
 
-    //遍历尝试匹配
+    //遍历尝试匹配（也尝试首字母小写版本，兼容 Text.capitalize() 的大写首字母）
+    const textUncap = text.length > 0 ? text[0].toLowerCase() + text.slice(1) : text;
     for (let i in cnItems) {
         //字典已有词汇或译文、且译文不为空，则返回译文
-        if (typeof(cnItems[i]) == "string" && (text == i || text == cnItems[i])){
+        if (typeof(cnItems[i]) == "string" && (text == i || text == cnItems[i] || textUncap == i)){
 			return text_prefix + cnItems[i] + text_reg_exclude_postfix + text_postfix;
-		} else if ( typeof(cnItems[i]) == "object" && text == i ){
+		} else if ( typeof(cnItems[i]) == "object" && (text == i || textUncap == i) ){
 			let result = cnItemByTag(i, cnItems[i], node, textori);
 			if (result != null){
 				return text_prefix + result + text_reg_exclude_postfix + text_postfix;
@@ -140,9 +141,16 @@ var cnItem = function (text, node) {
         }
     }
 
-    //调整收录的词条，0=收录原文，1=收录去除前后缀的文本
-    let save_cfg = 1;
-    let save_text = save_cfg ? text : textori;
+    //已含中文则无需汉化，直接返回，不计入生词表
+    if (/[\u4e00-\u9fff]/.test(textori)) {
+        return text_prefix + text + text_reg_exclude_postfix + text_postfix;
+    }
+
+    //调整收录的词条：0=收录原文（完整上下文），1=收录去除前后缀的文本
+    let save_cfg = 0;
+    let save_text = (save_cfg ? text : textori).trim();
+    // 首字母还原小写，使 Text.capitalize() 产生的大写变体与原文合并为同一条目
+    if (save_text.length > 0) save_text = save_text[0].toLowerCase() + save_text.slice(1);
     //遍历生词表是否收录
     for (
         let i = 0; i < cnItems._OTHER_.length; i++
