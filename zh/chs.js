@@ -10,7 +10,17 @@
 //1.汉化杂项
 var cnItems = {
     _OTHER_: [],
-    
+
+    // 用户报告的未翻译条目（小写首字母变体及特殊形式）
+    // 注意：cnPrefix/cnPostfix/cnExcludePostfix 会先剥离 '-' '(' ')' ':' '%' '是等，所以这里的 key 使用剥离后的形式
+    ' (can collect food, water': ' （可以收集食物，水',
+    'a dark alley between two monolithic shopping malls. There is a': '两座庞大购物中心之间的黑暗小巷。这里有',
+    'deity': '神',
+    'game saved': '游戏已保存',
+    "there doesn't seem to be anything hostile around.": '周围似乎没有任何敌对生物。',
+    'v. 0.5.2 (alpha': 'v. 0.5.2 （内测版',
+    'repair item': '修理物品',
+
     //1.1.待归类
     'sewer': '下水道',
     'refinery': '炼油厂',
@@ -318,7 +328,6 @@ var cnItems = {
     'Confirm': '确认',
     'Continue': '继续',
     'Take all': '全部拿走',
-    //Header
 
     //描述
     'Set up camp.': '建立营地。',
@@ -365,8 +374,6 @@ var cnItems = {
     'Clinic': '诊所',
     'Camp defences: +6': '营地防御 +6',
     'Camp defences: +10': '营地防御 +10',
-
-
     'Went scavenging. ': '去拾荒了。',
     'Went scavenging.': '去拾荒了。',
     'scavenge': '拾荒',
@@ -428,8 +435,6 @@ var cnItems = {
     'A dense corridor with barely enough space to walk. You feel your way in the darkness.': '一条密集的走廊，几乎没有足够的空间走路。 你在黑暗中感受到自己的方式。',
     'Do you want to restart the game? Your progress will be lost.': '你想重新开始游戏吗？ 你当前的游戏进度将会丢失。',
     'Confirmation': '信息确认',
-
-    'A wide square surrounded by crumbling make-shift residential towers that don\'t seem to have ever been connected to the grid.': '一个宽阔的广场，周围是摇摇欲坠的临时转换住宅塔楼，这些塔楼似乎从未与电网连接过。',
     'Scouted the area.': '侦查这个区域。',
     'Lockpick': '撬锁钳',
     'Full first aid kit': '全套急救箱',
@@ -472,24 +477,16 @@ var cnItems = {
     'Blocked by a fight.': '被一场战斗挡住了。',
     'Campfire already exists': '营火已经存在',
     'Can\'t do this while: Injury': '现在不能这么做:受伤',
-    'Caravan Stable required': '需要大篷车马厩',
     'Cement mill required: 2x house': '水泥磨机要求:2x 房子',
     'Chemistry': '化学',
-    'Concrete Fortification required': '需要混凝土加固',
     'Crafting': '工艺',
     'Field medicine': '野战医疗',
     'First Aid': '急救',
-    'Fortification required': '需要加固',
     'Guard Uniform': '警卫制服',
     'Hospitality': '热情好客',
-    'Improvement required': '需要改进',
-    'Library required': '需要图书馆',
-    'Market required': '需要市场',
     'Metal working 1': '金属加工1',
     'Metal working 2': '金属加工2',
-    'Moss garden required': '需要苔藓花园',
     'No passage.': '没有通道。',
-    'Research center required': '需要研究中心',
     'Revolvers': '左轮手枪',
     'Sewing': '缝纫',
     'Smithy required: 2x house': '铁匠铺要求:2x 房子',
@@ -518,13 +515,8 @@ var cnItems = {
     'Blueprint required.': '需要蓝图。',
     'Bag is full.': '包满了。',
     'Blocked. ': '路被挡住了。',
-    'Clinic required': '需要诊所',
     'Everything already selected.': '所有物品都已经选中了。',
-    'Generator required': '需要发电机',
-    'Hut required': '需要棚屋',
     'Nothing to collect': '没有东西可收集',
-    'Snail farm required': '需要蜗牛养殖场',
-    'Square required': '需要广场',
     'Can\'t carry that much stuff.': '带不动更多东西了。',
     'The darkness is like a wall.': '黑暗就像一堵墙。',
     'Fell through a rotten floor. Lost 1 lantern.': '从腐烂的地板上摔了下来。失去了1灯笼。',
@@ -533,13 +525,11 @@ var cnItems = {
     'discussing': '讨论',
     'A stranger shows up.': '一个陌生人出现了。',
     'Sat at the campfire to exchange stories, but there was nothing new.': '坐在篝火旁交换故事，但没有什么新东西。',
-    'Campfire required': '需要篝火',
     'No new rumours at the moment.': '目前没有新的传闻。',
     'You are alone in a massive dark corridor, far below sunlight.': '你独自在一个巨大的黑暗走廊里，远离阳光。',
     'Your stomach is grumbling.': '你的肚子在咕噜咕噜叫。',
     'Built a storage.': '建了一个存储空间。',
     'Shiv.': '制作了了一把小刀。',
-    'Researched Crafting.': '研究工艺。',
     'The art of crafting durable bags.': '制作耐用背包的艺术。',
     'Made an Improvised flip-flops.': '做了一个临时的人字拖。',
     'Warm Coat.': '做了一件暖和的外套。',
@@ -553,7 +543,6 @@ var cnItems = {
     'The world fades. You wake up back in camp.': '世界消失了。你在营地醒来。',
     'Exhausted and hungry, you sit to rest. Your consciousness fades.<br/>You wake up back in camp. Some of the scavengers found you and brought you home.': '又累又饿，你坐下来休息。你的意识消失。<br/>你在营地醒来。一些拾荒者发现了你并把你带回家。',
     'repair': '修复',
-    'Researched Building projects.': '研究建设项目。',
     'Area clear.': '区域已清理。',
     'Managing large building projects and building structures that allow passage to different levels.': '管理大型建筑项目和允许不同楼层通行的建筑结构。',
     'scout locale u': '侦查区域U',
@@ -564,20 +553,9 @@ var cnItems = {
     'Toolsmiths': '工具匠',
     'CD': 'CD',
     'Built a smithy.': '建造了一个铁匠铺。',
-    'Researched Metal working 1.': '研究金属加工1。',
     'Meager protection against the effects of polluted air.': '微薄的保护，防止污染空气的影响。',
     'Bold political leaflet printed on thick paper urging residents of the \'sewers\' to rebel against segregation.': '大胆的政治传单印在厚厚的纸上，敦促“下水道”的居民反抗种族隔离。',
     'An old circular data storage with the word \'backup\' written on it. Without an electric computing machine, it\'s impossible to stay if it is still readable.': '一个旧的循环数据存储，上面写着“备份”一词。 没有电动计算机，如果它仍然可读，则不可能留下来。',
-    //1.2.地图
-
-
-
-
-
-
-
-
-
     'A quiet residential area lined with slowly decaying apartment towers.': '一个安静的住宅区，两旁有缓缓腐烂的公寓楼。',
     'infested with urban pests': '受城市有害生物侵扰',
     'A narrow slum street surrounded (and in some parts, covered) by make-shift dwellings that have been adandoned for some time.': '一条狭窄的贫民窟街道，被临时搭建的住房所包围(有些地方甚至被盖住)。',
@@ -585,8 +563,6 @@ var cnItems = {
     'Clear the enemies blocking passage.': '清除堵塞通道的敌人。',
     'A narrow street lined by decommissioned control units for City services like water, electricity, air filtering and robotics.': '一条狭窄的街道，由退役的控制单元排列，用于城市服务，如水，电，空气过滤和机器人。',
     'A narrow slum street surrounded (and in some parts, covered) by make-shift dwellings.': '一条狭窄的贫民窟街道被移民住宅包围（在某些地方，被覆盖）。',
-
-
     'A former shopping street lined with deserted shops and artisan\'s workshops.': '这是一条前购物街，两旁都是空旷的商店和工具匠的工作室。',
     'Too hungry to go on.': '饿得走不动了。',
     'Exhaustion': '虚脱',
@@ -604,25 +580,17 @@ var cnItems = {
     'lock pick': '开锁',
     'intimidating': '令人生畏的',
     'Scout for additional resources and evidence.': '寻找额外的资源和线索。',
-    'A low street surrounded by old factories and industrial buildings.': '一条被旧工厂和工业建筑包围的低矮街道。',
     'An abandoned market square lined with the remains of shops and empty, silent billboards.': '一个废弃的市场广场，两旁是残留的商店和空荡荡的，寂静的广告牌。',
     'Too thirsty to go on.': '太渴了，没法继续走了。',
-    'A quiet square surrounded by abandoned apartments.': '一个安静的广场，周围都是废弃的公寓。',
-
-
     'A street lined with ruined factories and rats dashing to avoid light.': '街道两旁都是废弃的工厂，老鼠为了避光而四处逃窜。',
     'Got scared of the shadows and ran, leaving some items behind. Lost 1 tattered shirt.': '因为害怕阴影逃跑了，留下了一些东西。失去了1件破旧的衬衫。',
     'Got scared of the shadows and ran, leaving some items behind. Lost 1 shiv.': '因为害怕阴影逃跑了，留下了一些东西。失去了1把小刀。',
-    'Scouted the area. 找到 一个 well. There is a sewer here that seems worth investigating.': '在该地区进行了侦察。 找到一个水井。 这里有一个下水道似乎值得调查。',
-
-
     'An deserted corridor lined with the remains of shops and artisan\'s workshops.': '一条空无一人的走廊，两旁是商店和工具匠作坊的遗迹。',
     'There used to be a few homes here, but they have not been repaired in a long time.': '这里过去有几所房子，但很长一段时间没有修理了。',
     'A filthy corridor packed so full of abandoned dark-dweller shacks that there is barely enough space to pass through.': '肮脏的走廊里挤满了被遗弃的黑暗居民的棚屋，几乎没有足够的空间通过。',
     'Too tired to go on.': '太累了无法继续走了。',
     'There has been a raid, but the camp was defended.': '我们遭到了突袭，但营地被守住了。',
     'Exhausted and helpless, you sit to rest. Your consciousness fades.<br/>When you wake up, you find yourself back in camp.': '疲惫无助，你坐下来休息。你的意识消失。<br/>当你醒来时，你发现自己又回到了营地。',
-
     'Combine pieces to a blueprint.': '将碎片组合成蓝图。',
     'Found a piece of forgotten technology.': '发现了一块被遗忘的技术。',
     'Healed all injuries.': '治愈了所有伤病。',
@@ -634,46 +602,36 @@ var cnItems = {
     'Increases with camp size and decreases with camp defences.': '随营地规模增加而增加，随营地防御而减少。',
     'Level raid danger is a multiplier for raids on this level. 100% is baseline.': '等级突袭危险是该层突袭强度的倍率。100% 为基准值。',
     'Missing pieces.': '丢失的碎片。',
-
     'A wide square with a ruined factory on one side and what looks like the remains of an old storehouse on the other.': '一个宽阔的广场，一边是一个废弃的工厂，另一边看起来像是一个旧仓库的遗迹。',
     'A mostly empty square with of the remains of old cable systems criss-crossing the low ceiling.': '一个几乎空无一人的广场，低矮的天花板上纵横交错着旧电缆系统的残骸。',
     'leaking water pipe': '漏水的水管',
     'Refilled water at the leaking water pipe.': '在漏水的水管处加满水。',
     'An quiet market square lined with the deserted shops and empty, silent billboards.': '一个安静的市场广场，两旁是空荡荡的商店和无声的广告牌。',
-
-
     'If there was any sunlight, these would probably be handy.': '如果有阳光，这些可能会很方便。',
     'Staircase Up already exists': '向上的楼梯已经存在',
     'Found a park bench to sleep on. Barely feel rested.': '找了个公园的长椅睡觉。几乎没有休息的感觉。',
     'building': '建造',
-
     'Got injured.': '受伤了。',
     'well': '水井',
     'Abandoned mall': '废弃的购物中心',
-
-
     'A wide square with a abandoned factory on one side and what looks like an old storehouse on the other.': '一个宽阔的广场，一边是一个废弃的工厂，另一边看起来像一个旧仓库。',
     'A rare empty space inside the City; there is no floor or walls, no buildings, nothing.': '城市内部罕见的空地;没有地板和墙壁，没有建筑物，什么都没有。',
     'area too cold': '这里太冷了',
     'Feeling warm again.': '感觉又暖和了。',
     'It\'s unbearably cold.': '冷得受不了。',
     'Safer here.': '这里更安全。',
-
     'swarm': '成群',
     'giant centipedes': '巨大的蜈蚣',
     'Won\'t get far with low stamina.': '耐力过低，走不了多远。',
-    'Trading post required': '需要贸易站',
     'Shortcut to the camp on this level.': '这一层通往营地的捷径。',
     'No news from other camps at the moment.': '目前没有其他营地的消息。',
     'population decreasing': '人口减少',
     'No water': '没水了',
     'There won\'t be much water left in the camp.': '我们营地里的水不多了。',
     'New ways of making textiles.': '制造纺织品的新方法。',
-    'Researched Textile Arts.': '纺织艺术已研究。',
     'Give your camp a new name': '给你的营地起个新名字',
     'Rename Camp': '重命名营地',
     'Built a hut.': '建了一个棚屋。',
-    'Researched Compass.': '研究指南针。',
     'A tool for reliable navigation in the vast city, enabling the establishment of basic trade routes.': '在广阔的城市中可靠导航的工具，可以建立基本的贸易路线。',
     'Built a trading post.': '建立了一个贸易站。',
     'Trading post already exists': '贸易站已经存在',
@@ -688,7 +646,6 @@ var cnItems = {
     'This level seems eerily devoid of any signs of recent human activity.': '这一层似乎没有任何近期人类活动的迹象。',
     'Alternative source of food.': '替代食物来源。',
     'Requires undiscovered resources.': '需要未被发现的资源。',
-    'Researched Urban Heliculture.': '研究蜗牛养殖。',
     'raid': '突袭',
     'Bone Crossing': '骨交叉',
     'Built a snail farm.': '建了一个蜗牛农场。',
@@ -714,10 +671,6 @@ var cnItems = {
     'Puzzling piece of stone with an ancient rune on it.': '一块刻着古代符文的令人费解的石头。',
     'Traded with a caravan.': '和一支商队进行交易',
     'Built a tower block.': '建一座塔楼。',
-    'Researched Tower blocks.': '研究塔楼。',
-
-
-
     'poisonous spiders': '毒蜘蛛',
     'Party': '队伍',
     'It seems there used to be shops and markets here, but there isn\'t much left except for ruins.': '这里以前似乎有商店和市场，但现在只剩下废墟了。',
@@ -725,10 +678,6 @@ var cnItems = {
     'gigantic spiders': '巨型蜘蛛',
     'ghost bats': '幽灵蝙蝠',
     'cave bats': '穴居蝙蝠',
-
-
-
-
     'A narrow, forgotten corridor running between two tall residential towers, with barely enough space to walk.': '一条狭窄的，被遗忘的走廊，位于两座高耸的住宅楼之间，几乎没有足够的空间行走。',
     'A narrow corridor between two massive shopping towers with barely enough space to walk.': '两大购物中心之间的狭窄走廊，几乎没有足够的空间行走。',
     'A former industrial sector where factories or workshops lie in ruins.': '以前的工业部门，那里的工厂或车间已成废墟。',
@@ -739,8 +688,6 @@ var cnItems = {
     'With this bag, weight is starting to be more of a problem than space.': '有了这个袋子，重量开始成为比空间更大的问题。',
     'Smooth stone that fits in the palm of a hand. There is something calming about it.': '手掌大小的光滑石头。有一种使人平静的东西。',
     'Keeping other animals away from food and materials for more reliable storage.': '让其他动物远离食物和材料，以便更可靠地储存。',
-
-
     'A mostly empty and desolate square with the remains of some broken cable systems criss-crossing the low ceiling.': '一个空荡荡的广场，低矮的天花板上纵横交错着一些破损的电缆系统的残骸。',
     'albino salamanders': '白化蝾螈',
     'camp': '营地',
@@ -754,10 +701,6 @@ var cnItems = {
     'It seems this used to be a market square of some sort, but there isn\'t much left except for ruins.': '这里似乎曾经是某种集市广场，但现在除了废墟已所剩无几。',
     'Mill Road Academy': '米尔路学院',
     'Protection against environmental hazards': '环境危害防护',
-    'Researched Synthetic Fibers.': '研究了合成纤维。',
-
-
-
     'A few large unidentifiable ruins loom over a gloomy industrial square.': '在一个阴暗的工业广场上隐约可见几处巨大的，无法辨认的废墟。',
     'Abandoned shop': '废弃的商店',
     'animals': '动物',
@@ -769,8 +712,6 @@ var cnItems = {
     'Enables building huge structures to bridge levels when there is no existing staircase or elevator, and lays the foundation for more construction projects.': '在没有现有楼梯或电梯的情况下，可以建造巨大的桥梁，为更多的建设项目打下基础。',
     'Fortified the camp.': '加固了营地。',
     'ratsnakes': '鼠蛇',
-    'Researched Engineering.': '研究工程。',
-
     'Trader from Slugger Town': '来自重击城的商人',
     'area too polluted': '污染严重地区',
     'The air here is toxic.': '这里的空气有毒。',
@@ -892,14 +833,11 @@ var cnItems = {
     'Chest wound (serious) (health -': '胸部伤口(严重)(健康-',
 
     //1.5.升级
-    'Researched Field medicine.': '研究野战医学。',
-    'Researched Rope-making.': '研究绳索制作。',
     'Treating basic injuries.': '治疗基本伤害。',
     'available': '可用',
     'locked': '未解锁',
     'researched': '已研究',
     'The craft of making clothes out of fabric.': '用布料制作衣服的工艺。',
-    'Researched Sewing.': '研究了缝纫。',
     'Caravans': '商队',
     'Travelling to other factions to trade for goods': '前往其他势力进行货物贸易',
     'Sometimes strangers pass by the camp. Perhaps we can offer them a place to sleep?': '有时有陌生人经过营地。也许我们可以给他们提供一个睡觉的地方?',
@@ -912,11 +850,6 @@ var cnItems = {
     'Managing bigger caravans that can carry more goods': '管理能够运送更多货物的大型商队',
     'Constructions to keep unwelcome strangers away.': '把不受欢迎的陌生人拒之门外。',
     'An ancient but effective weapon.': '一种古老而有效的武器。',
-
-    //1.6.属性（30）
-
-    //1.7.敌人 
-
 
     //1.8.营地
     'A raid! The camp is under attack.': '突袭！ 营地受到攻击。',
@@ -1099,7 +1032,6 @@ var cnItems = {
     'Note that this game is still in development and many features are incomplete and unbalanced. Updates might break saves. Feedback and bug reports are appreciated!': '请注意，该游戏仍在开发中，许多功能不完整且不平衡。 更新可能会破坏保存。 反馈和错误报告表示赞赏！',
     'There are currently no blueprints in progress.': '当前没有进行中的蓝图。',
     'There are no building projects available.': '没有可用的建筑项目。',
-    'Reputation required': '声望需要',
     'radiation protection  +': '辐射防护 +',
     'Player name': '玩家名字',
     'Player strength': '玩家实力',
@@ -1155,7 +1087,6 @@ var cnItems = {
     'can be collected here.': '可以在这里收集。',
     'Scouted the area. This seems like a good place for a camp.': '侦察该地区。 这似乎是建造营地的好地方。',
     'There are some make-shift shacks against the walls here, but they have not been repaired in a long time. Both': '这里有一些临时棚屋靠在墙上，但是很长一段时间都没有得到修复。 都',
-    'There doesn\'t seem to be anything hostile around. This would be a good place for a': '周围似乎没有任何威胁。 这将是一个不错的地方',
     'This seems like a good place for a camp.': '这似乎是露营的好地方。',
     'Didn\'t find anything useful.': '找不到有用的东西。',
     'Take selected': '带走所选物品',
@@ -1164,9 +1095,6 @@ var cnItems = {
     'can be collected here. There is a': '可以在这里收集。这里有一个',
     'There doesn\'t seem to be anything hostile around.': '周围似乎没有任何威胁。',
     'already built': '已建',
-    'Busy resting (': '忙于休息 (',
-    'camp defence +': '营地防御 +',
-    'concrete +': '混凝土 +',
     'food -': '食物 -',
     'water -': '水 -',
     'water +': '水 +',
@@ -1184,7 +1112,6 @@ var cnItems = {
     'Won\'t get far without food and water.': '没有食物和水的话，走不了太远。',
     'Blocked. Nothing here.': '受阻。这里什么都没有。',
     'Hairpin': '发夹',
-    'Type: Ingredient': '类型: 原料',
     'Trappers': '猎人',
     'tools +': '工具 +',
     'There is a camp here': '这里有一个营地',
@@ -1203,9 +1130,7 @@ var cnItems = {
     'broken appliance': '坏掉的电器',
     'Broken appliance': '坏掉的电器',
     'Can probably be taken apart down for some scrap metal': '可以拆下一些废金属',
-    'Disassemble Broken appliance': '拆卸坏掉的电器',
     'Found a Broken appliance.': '找到一个坏掉的电器',
-    'Type: Exploration': '类型：探索',
     'Went scavenging. Fled empty-handed.': '去清理。 空手而逃。',
     'A street or corridor with an abandoned air. Details fade in the darkness. There is no': '街道或走廊有被遗弃的空气。 细节在黑暗中褪色。 没有',
     'Already rested outside recently.': '最近已经在外面休息了。',
@@ -1215,7 +1140,6 @@ var cnItems = {
     'Exhausted and helpless, you sit to rest. Your consciousness fades.': '精疲力尽和无助，你坐下来休息。 你的意识消失了。',
     'When you wake up, you find yourself back in camp.': '当你醒来时，你发现自己回到了营地。',
     '. Both': '. 都',
-    'passage required': '所需的通道',
     'leaking here that could be collected.': '泄漏到这里可以收集。',
     'here, but it needs to be repaired.': '在这里，但需要修理。',
     'An deserted corridor lined with the remains of shops and artisan\'s workshops': '一条废弃的走廊，两旁都是商店和工具匠的作坊遗迹',
@@ -1235,7 +1159,6 @@ var cnItems = {
     'Workers: -': '工人: -',
     'Made the campfire a bit cozier.': '使篝火有点舒适。',
     'current': '当前',
-    'Busy discussing (': '忙于讨论 (',
     'buildings: clinic': '建筑物：诊所',
     'Campfires: <': '营火: <',
     'A mostly empty square with of the remains of old cable systems criss-crossing the low ceiling': '几乎是一个空的正方形，上面有旧电缆系统的残留物，纵横交错穿过低矮的天花板',
@@ -1253,7 +1176,6 @@ var cnItems = {
     'Nothing left behind.': '什么都没有留下。',
     'A narrow slum street surrounded (and in some parts, covered) by make-shift dwellings that have been adandoned for some time. There is a': '一条狭窄的贫民窟街道被临时搭建的住房包围着(有些地方甚至被遮盖着)。有一个',
     'Blocked. area too cold': '路被阻挡。这个区域太冷',
-    'Busy recovering (': '忙于恢复 (',
     'Camp was defended (a few seconds ago': '营地成功防守 (几秒钟前',
     'Camp was defended (less than a 分钟前': '营地成功防守 (小于1分钟前',
     'cold': '寒冷',
@@ -1269,11 +1191,9 @@ var cnItems = {
     'The street is clear.': '这条街已清理。',
     'Status required: Injury': '所需状态：受伤',
     'Treatment: NaN': '治疗: NaN',
-    'Blueprint (Crafting': '蓝图 (工艺',
     'Blueprints pieces': '蓝图碎片',
     'Decaying house': '腐朽的房子',
     'Leather': '皮革',
-    'Scouted the area. There is a house here that seems worth investigating.': '侦察该地区。 这里有一所房子似乎值得调查。',
     'Scouted the house.': '侦察房子。',
     'There is a house here that seems worth investigating.': '这里有一所房子似乎值得调查。',
     'There is a sewer here that seems worth investigating.': '这里有一个下水道，看来值得调查。',
@@ -1281,8 +1201,6 @@ var cnItems = {
     'abandoned robot': '废弃的机器人',
     'Abandoned robot': '废弃的机器人',
     'Already scouted': '已经侦察',
-    'Blueprint (Building projects': '蓝图 (建造项目',
-    'Disassemble Abandoned robot': '拆卸废弃的机器人',
     'Found a Abandoned robot.': '找到了一个废弃的机器人。',
     'Took apart the robot. Gained 11 metal.': '拆开了机器人。 获得11金属。',
     'Scouted the sewer.': '侦察下水道。',
@@ -1299,12 +1217,8 @@ var cnItems = {
     'Ragged pants  (': '破烂的裤子（',
     'A former shopping street lined with deserted shops and artisan\'s workshops. Both': '一条以前的购物街，两旁都是空无一人的商店和工具匠的作坊。 都',
     'A cluttered square lined with nondescript utility buildings.': '一片杂乱的广场，四周是样式普通的市政设施建筑。',
-    'A cluttered street with long-abandoned buildings covered in strange moss': '一条杂乱的街道，两旁是覆满奇异苔藓的废弃已久建筑。',
     'A street sign with directions has been painted over. Towards north it says': '一块写有方向指示的路牌被人涂抹过。朝北方向写着',
-
-
     'here (15). A street sign with directions has been painted over. Towards north it says': '（15）。一块写有方向指示的路牌被人涂抹过。朝北方向写着',
-    'Some kind of a commercial complex with several narrow passages this way and that.': '某种商业综合体，内部有几条纵横交错的狭窄通道。',
     'Duct tape': '胶带',
     'S': '南',
     'here (10). A group of pests on the south has been defeated.': '这里（10）。 南部的一群有害生物已被击败。',
@@ -1313,14 +1227,12 @@ var cnItems = {
     'tattered shirt': '破烂的衬衫',
     'Tattered shirt': '破烂的衬衫',
     'Tattered shirt  (': '破烂的衬衫（',
-    'A low street surrounded by old factories and industrial buildings. There is a': '旧厂房和工业建筑包围的低街。 有一个',
     'Found a water tower.': '找到了一座水塔。',
     'here (10). A group of pests on the north has been defeated.': '这里（10）。 北部的一群有害生物已被击败。',
     'here (15). A swarm of pests on the north has been defeated.': '这里（15）。 北部的一大群有害生物被击败了。',
     'here (15).': '（15）。',
     'here (15). There is a': '（15）。有一个',
     'here, but it is unrepairable.': '在这里，但无法修复。',
-    'here. There is a bit of': '这里。 有一点',
     'improvised flip-flops': '简易的人字拖',
     'Neglected house': '无人照管的房屋',
     'Refilled water at the water tower.': '在水塔上加满水。',
@@ -1334,19 +1246,16 @@ var cnItems = {
     'This area is infested with urban pests.': '这个地区有大量的城市有害生物。',
     'An deserted corridor lined with the remains of shops and artisan\'s workshops. Both': '这个地区有大量的城市有害生物。',
     'T-shirt.': '做了一件T恤。',
-    'Researched Weaving.': '研究编织。',
     't-shirt': 'T恤',
+    'Colony Hull': '殖民地船壳',
     'buildings: staircase up, staircase down, square': '建筑物：楼梯向上，楼梯向下，广场',
-    'Colony Hull required': '需要殖民地船壳',
     'connecting levels': '连接层',
     'map': '地图',
     'Stairwell  down repaired at 5W 10N level 9.': '在第13层的 0E 4N 位置修复了向下的楼梯。',
     'Stairwell  down repaired at 3E 4S level 12.': '在12层的 3E 4S 修复了向下的楼梯。',
     'Stairwell  down repaired at 0E 4N level 13.': '在第13层的 0E 4N 位置修复了向下的楼梯。',
     'here, and it has been repaired.': '在这里，它已经被修复。',
-    'A wide square surrounded by crumbling make-shift residential towers that don\'t seem to have ever been connected to the grid. Both': '一个宽广的广场，周围环绕着摇摇欲坠的临时住宅楼，似乎从未与电网连接。 都',
     'Blocked. Blocked by debris.': '受阻。被杂物阻塞。',
-    'Blueprint (Urban Heliculture': '蓝图(城市养殖',
     'clear': '清除',
     'Clear the debris blocking the way.': '清除杂物阻塞的道路。',
     'Debris': '废墟',
@@ -1355,28 +1264,20 @@ var cnItems = {
     'hide': '隐藏',
     'Scouted the area. There used to be a stairwell here.  There is a sewer here that seems worth investigating.': '选定的区域。这里以前有个楼梯井。这里有个下水道似乎值得调查一下。',
     'A narrow slum street surrounded (and in some parts, covered) by make-shift dwellings. There is a': '一条狭窄的贫民窟街道，周围(有些地方甚至被遮盖)都是临时住所。有一个',
-    'Blueprint (Compass': '蓝图（指南针',
     'E': '东',
     'mittens': '连指手套',
-    'Scouted the area. Found a well. There is a sewer here that seems worth investigating.': '选定的区域。发现了一个。这里有个下水道似乎值得调查一下。',
     'A crumbling street lined with what were once some kind of apartments. Both': '摇摇欲坠的街道两旁曾经是公寓。这两个',
-    'A wide square surrounded by crumbling make-shift residential towers that don\'t seem to have ever been connected to the grid': '一个宽阔的广场，周围是摇摇欲坠的临时转换住宅塔楼，它们似乎从未与电网连接过',
-    'Blueprint (Textile Arts': '蓝图(纺织艺术',
     'Mittens  (': '连指手套（',
-    'Scouted the area. There is a building here that seems worth investigating.': '侦察该地区。 这里有一栋似乎值得调查的建筑物。',
-    'A low street surrounded by old factories and industrial buildings': '一条被旧工厂和工业建筑包围的低矮街道',
     'A narrow slum street surrounded (and in some parts, covered) by make-shift dwellings that have been adandoned for some time. Both': '一条狭窄的贫民窟街道被临时搭建的住房包围着(有些地方甚至被遮盖着)。这两个',
     'a pest approaches': '有害生物的方法',
     'A street lined with ruined factories and rats dashing to avoid light': '一条街道上到处都是破烂的工厂和老鼠，为了避免光线奔跑',
     'A street lined with ruined factories and rats dashing to avoid light. There is a': '一条街道上到处都是破烂的工厂和老鼠，为了避免光线奔跑。 有一个',
     'An quiet market square lined with the deserted shops and empty, silent billboards. Both': '一个安静的集市广场，两旁都是空无一人的商店和空寂的广告牌。 都',
-    'Camp (6W 1S level': '营地（6W 1S 层',
     'N': '北',
     'Found a leaking water pipe.': '发现漏水的水管。',
     'Scouted the area. Found a leaking water pipe.': '侦察该地区。 发现漏水的水管。',
     'Scouted the shop.': '侦察商店。',
     'This area is infested with huge rats.': '这个地区有大只老鼠。',
-    'A wide square surrounded by crumbling make-shift residential towers that don\'t seem to have ever been connected to the grid. There is a': '一个宽广的广场，周围环绕着摇摇欲坠的临时住宅楼，似乎从未与电网连接。 有一个',
     '1 trap, 1 bucket': '1个陷阱，1个桶',
     'debris (north': '碎片(北',
     'Lost some items.': '失去了一些东西。',
@@ -1384,7 +1285,6 @@ var cnItems = {
     'An quiet market square lined with the deserted shops and empty, silent billboards': '一个安静的市场广场，两旁是空无一人的商店和无声的广告牌',
     'buildings: trading post': '建筑物：贸易站',
     'Built a trading post. Build another one to connect the camps.': '建了一个贸易站。 建立另一个来连接其它营地。',
-    'Camp (1E 0S level': '营地(1E 0S 层)',
     'NE': '东北',
     'NW': '西北',
     'Found a Lockpick.': '找到了一个撬锁工具。',
@@ -1396,32 +1296,17 @@ var cnItems = {
     'No food: -': '无食物：-',
     'No water: -': '无水：-',
     'Plastic bottle': '塑料瓶',
-    'Researched Leather-working.': '研究皮革加工。',
     'Resting: -': '休息：-',
     'Scouted the mall.': '侦察购物中心。',
     'Stumbled on some wrecked pipes. Lost 1 wool hat.': '绊倒在一些破损的管道上。丢了一顶羊毛帽子。',
     'surprised by a pest while scouting': '侦察时被有害生物袭击',
-    'There doesn\'t seem to be anything hostile around. A group of pests on the east has been defeated.': '周围似乎没有任何敌对的生物。东部的一群有害生物被打败了。',
-    'There doesn\'t seem to be anything hostile around. A group of pests on the west has been defeated.': '周围似乎没有任何敌对的生物。西部的一群有害生物被打败了。',
-    'There doesn\'t seem to be anything hostile around. Passage to the east is blocked by a group of pests.': '周围似乎没有任何敌对的生物。通往东方的道路被一群有害生物堵塞了。',
-    'There doesn\'t seem to be anything hostile around. Passage to the NE is blocked by debris.': '周围似乎没有任何敌对的生物。通往东北方向的通道被碎片堵塞了。',
-    'There doesn\'t seem to be anything hostile around. Passage to the south is blocked by debris. Passage to the west is blocked by debris. Passage to the SW is blocked by debris. Passage to the NW is blocked by debris.': '周围似乎没有任何敌对的生物。通往南方的通道被碎片堵塞了。通往西方的通道被碎片堵塞了。通往西南方向的通道被碎片堵塞了。通往西北方向的通道被碎片堵塞了。',
     'There used to be a few homes here, but they have not been repaired in a long time': '这里以前有几栋房子，但很久没修了',
     'Treatment: Infinity': '治疗:无限',
     'undefined': '未定义',
     'undefinedReputation': '未定义声望',
     'Upgraded the square.': '升级了广场。',
     'wool hat': '羊毛帽',
-    'There has been a raid on level 13 (a few seconds ago). We need better defences.': '13层遭到了一次突袭(几秒钟之前)。我们需要更好的防御。',
-    'buildings: snail farm, items: smoke bomb': '建筑:蜗牛农场，物品:烟雾弹',
-    '(1). Passage to the south is blocked by a swarm of pests.': '（1） 南部的通道被大量的有害生物阻挡。',
-    '(1). There is a': '（1） 这里有一个',
-    '(5). A pack of pests on the north has been defeated.': '（5） 北部的一群有害生物已被击败。',
-    '(5). Passage to the east is blocked by a group of pests.': '（5） 通往东部的通道被一群有害生物阻挡。',
-    '(5). Passage to the west is blocked by a group of pests.': '（5） 通往西部的通道被一群有害生物阻挡',
     'Blocked. area too polluted': '受阻。污染严重的区域',
-    'here, and it has been repaired.A swarm of pests on the south has been defeated.': '在这里，它已经得到了修复。南部的一大群有害生物被击败了。',
-    'here, and it has been repaired.Passage to the south is blocked by a swarm of pests.': '在这里，它已经得到了修复。向南的通道被一大群有害生物阻挡。',
     'knife': '刀',
     'Poisoned (health -': '中毒（健康-',
     'Poisoned (health -50%,': '中毒（健康-50％，',
@@ -1432,8 +1317,6 @@ var cnItems = {
     'Found a Plastic bag.': '找到一个塑料袋。',
     'Helps navigating the City.': '帮助城市中导航。',
     'A crumbling street behind a maintenance center, the low ceiling criss-crossed by old wires and ducts': '维修中心后面的一条摇摇欲坠的街道上，低矮的天花板纵横交错着旧的电线和管道',
-    'Type: UniqueEquipment': '类型：唯一装备',
-
     'A dense corridor so full of maintenance ducts and cables that there is barely enough space to pass through.': '一个拥挤的走廊，到处都是维护管道和电缆，几乎没有足够的空间可以穿过。',
     'Scouted the area. Found a water tower.': '侦察该地区。 找到了一座水塔。',
     'A filthy corridor packed so full of abandoned dark-dweller shacks that there is barely enough space to pass through': '肮脏的走廊里挤满了被遗弃的黑暗居民的棚屋，几乎没有足够的空间可以通过',
@@ -1442,7 +1325,6 @@ var cnItems = {
     'Medical mask': '医用口罩',
     'Might protect from environmental hazards.': '可能会免受环境危害。',
     'This area is occupied by bots and urban pests.': '该区域被机器人和城市有害生物占据。',
-    'Type: Artefact': '类型：人工制品',
     'basic backpack': '基本背包',
     'Poor defences: -': '防御不力：-',
     'Failed to import save.': '无法导入存档。',
@@ -1450,7 +1332,6 @@ var cnItems = {
     'A mostly empty square with of the remains of old cable systems criss-crossing the low ceiling. Both': '一个几乎是空的广场，上面是旧电缆系统的残骸，纵横交错地穿过低矮的天花板。 都',
     'An extra deadly ranged weapon.': '一种额外的致命远程武器。',
     'Decent shoes for walking in most places.': '在大多数地方都适合步行的鞋子。',
-    'Scouted the area. There is a camp here that seems worth investigating.': '侦察该地区。 这里似乎有一个营地值得调查。',
     '  Found a new': '找到一个新的',
     'There are few signs of human life on this level.': '在这一层，几乎没有人活动的迹象。',
     'trading partner': '贸易伙伴',
@@ -1515,7 +1396,6 @@ var cnItems = {
     'Unassigned workers': '未分配的工人',
     'favour +': '恩惠 +',
     'herbs +': '草药 +',
-    'workers required': '工人需要',
     'Max level': '最高级',
     'max  built': '最大建造',
     'A piece of paper that seems to be part of a bigger map': '一张看起来像是更大地图一部分的纸片',
@@ -1562,8 +1442,6 @@ var cnItems = {
     'square': '广场',
     'trading post': '贸易站',
     'enable bridge gap': '弥合桥梁差距',
-    'Bucket required': '需要桶',
-    'Busy visiting (': '忙于访问 (',
     "visiting": "访问中",
     'empty hut': '空棚屋',
     'Smoke Bomb.': '烟雾弹。',
@@ -1587,21 +1465,17 @@ var cnItems = {
     'A destroyed alley lined with massive storehouses.': '一个被摧毁的小巷，两旁排满了巨大的仓库。',
     'A deadly ranged weapon crafted from fairly simple materials.': '一种致命的远程武器，用相当简单的材料制成。',
     'A damaged square outside a huge industrial processing complex, all entrances tightly shut.': '巨大的工业加工场外的受损广场，所有入口都被严密关闭。',
-    'A damaged industrial complex littered with debris and broken machinery.': '损坏的工业园区，到处都是碎片和破碎的机械。',
     '+24, attack speed +': '+24，攻击速度+',
     'Used a first aid kit.': '使用了急救箱。',
     'Temples': '庙宇',
     'Shuriken.': '手里剑。',
-    'A broken alley surrounded by storehouses.': '仓库包围的一条破碎的小巷。',
     'Basic first aid kit.': '基本急救箱。',
-
     'Clerics': '牧师',
     'Pistol.': '手枪。',
     'You\'ve found a bug! Please reload the page to continue playing.': '您发现了一个bug!请重新加载页面以继续游戏。',
     'Note that the game is still in alpha and updates can break old saves.': '注意，游戏仍处于alpha阶段，更新可能会破坏旧的保存。',
     'here (30). Passage to the east is blocked by a': '(30)。向东的通道堵住了被',
     'swarm of pests': '成群的有害生物',
-    'A cluttered alley beneath a vast cable car station.': '在一个巨大的缆车站下面的一条杂乱的小巷。',
     'albatross': '沉重负担',
     'An alley at the base of an enormous pillar supporting the level above.': '一根巨大的柱子支撑着上面的水平面，底部的一条小巷。',
     'an animal is blocking passage': '有动物堵住了通道',
@@ -1621,10 +1495,7 @@ var cnItems = {
     'crafting trader': '手工艺商人',
     'A crafting trader arrives.': '一个手工艺商人到达。',
     'This area is patrolled by security bots.': '这个区域有安全机器人巡逻。',
-    'Some kind of a residential complex with several narrow passages this way and that': '某种住宅小区，有几条狭窄的通道',
     'A square at the base of an enormous pillar supporting the level above.': '在一个巨大的柱子底部的一个广场支撑着上面的层面。',
-    'A spacious apartment complex littered with debris and garbage.': '到处散落着碎片和垃圾的宽敞公寓大楼。',
-    'A cluttered alley beneath a vast cable car station': '在一个巨大的缆车站下面的一条杂乱的小巷',
     'passage  down (stairwell) (broken': '向下 (楼梯) (坏掉的',
     'mob of pests (east': '一群有害生物(东部',
     'giant scorpion': '巨型蝎子',
@@ -1643,30 +1514,21 @@ var cnItems = {
     'A mob of bots on the south has been defeated.': '南方的一群机器人被打败了。',
     'A group of pests on the north has been defeated.': '北方的一群有害生物被打败了。',
     'Some sort of a maintenance corridor between two vast data centers with barely enough space to walk.': '两个庞大数据中心之间的维护通道，几乎没有足够的行走空间。',
-    'Some kind of a residential complex with several narrow passages this way and that.': '某种住宅小区，有几条狭窄的通道。',
     'There used to be a stairwell here.  There is a camp here that seems worth investigating.': '这里以前有个楼梯井。这里有个营地似乎值得调查一下。',
     'There is a market here that seems worth investigating.': '这里有一个似乎值得调查的市场。',
     'defunct tram station': '已倒闭的有轨电车车站',
-
     'A street at the base of an enormous pillar supporting the level above.': '街道在一个巨大的柱子的底部支撑着上面的层面。',
     'A narrow, narrow alley between two monolithic shops.': '在两个巨大的商店之间的一条狭窄的小巷。',
-    'A narrow street with long-abandoned buildings covered in strange moss..': '一条狭窄的街道上，废弃已久的建筑物上覆盖着奇怪的苔藓。',
     ' There is a': '有一个',
     'A dark corridor with remains of broken machinery from long-gone inhabitants.': '一条黑暗的走廊，里面是早已消失的居民遗留下来的坏机器。',
     'a bot is blocking passage': '一个机器人挡住了通道',
-    'Some kind of a maintenance complex with several narrow passages this way and that': '这是一种复杂的维修设施，有几条狭窄的通道',
     "Not enough people on this level.": "本层的人还不够多。",
     'leaking here that could be collected. There is a': '这里的泄漏可以收集。有一个',
-    'A dark alley with long-abandoned buildings covered in strange moss.. Both': '一条黑暗的小巷，废弃已久的建筑物上覆盖着奇怪的苔藓。都',
-    'A narrow street with long-abandoned buildings covered in strange moss.': '一条狭窄的街道，上面有废弃已久的建筑，上面覆盖着奇怪的苔藓。',
     'This area is patrolled by security bots. A mob of bots on the north has been defeated.': '这个区域有安全机器人巡逻。北方的一群机器人被打败了。',
     'This area is occupied by bots and urban pests. Debris to the east has been cleared away. Debris to the west has been cleared away. Debris to the SE has been cleared away.': '这个地区被机器人和城市有害生物占领。东边的残骸已被清除。西边的残骸已被清除。向东南的碎片已被清除。',
-    'There doesn\'t seem to be anything hostile around. Debris to the east has been cleared away. A mob of bots on the west has been defeated.': '周围似乎没有任何敌意。东边的残骸已被清除。西方的一群机器人被打败了。',
-    'Some kind of a slum complex with several narrow passages this way and that': '某种贫民窟，有几条狭窄的通道',
     'A dark corridor with remains of broken machinery from long-gone inhabitants': '一条黑暗的走廊，里面是早已消失的居民遗留下来的坏机器',
     'Stumbled on some wrecked pipes. Lost 1 factory uniform shirt.': '偶然发现了一些破损的管道。丢失了一件工厂制服衬衫。',
     'A narrow street between two vast shacks with barely enough space fit through': '狭窄的街道夹在两个巨大的棚屋之间，几乎没有足够的空间可以穿过',
-    'A narrow slum alley with a few large unidentifiable ruins looming over it': '一条狭窄的贫民窟小巷，隐约可见几处无法辨认的巨大废墟',
     'Weak and hungry, you sit to rest. Your consciousness fades.': '又弱又饿，你坐下来休息。你的意识消失。',
     'A former maintenance area with a orderly atmosphere lingering from its past.': '以前的维修区，有秩序的气氛，从它的过去。',
     ' Both': ' 都',
@@ -1674,8 +1536,6 @@ var cnItems = {
     'A narrow street between two vast shacks with barely enough space fit through.': '狭窄的街道夹在两个巨大的棚屋之间，几乎没有足够的空间可以穿过。',
     'A narrow, cramped alley between two symmetrical huts': '在两个对称的小屋之间的狭窄狭窄的小巷',
     'Some sort of a residential corridor between two vast apartments with barely enough space to walk.': '两间大公寓之间的住宅走廊，几乎没有足够的行走空间。',
-    'Some kind of a public complex with several narrow passages this way and that.': '某种公共综合体，有几个狭窄的通道。',
-    'Some kind of a maintenance complex with several narrow passages this way and that.': '这是一种复杂的维修设施，有几条狭窄的通道。',
     'Slightly more reliable than the shiv.': '比刀稍微可靠一点。',
     'snail farm, items: smoke bomb': '蜗牛农场，物品:烟雾弹',
     'staircase up, staircase down, square': '楼梯上，楼梯下，广场',
@@ -1685,7 +1545,6 @@ var cnItems = {
     'Travel to other factions to trade for goods.': '前往其他派别进行商品交易。',
     'Sometimes travellers pass by the camp. Perhaps we can offer them a place to sleep?': '有时，旅行者经过营地。 也许我们可以为他们提供一个睡觉的地方？',
     'Weak and thirsty, you sit to rest. Your consciousness fades.': '又弱又渴，你坐着休息。你的意识消失。',
-
     'Feeling stronger and more awake.': '感觉更强壮，更清醒。',
     'A wide bridge over the level below with separate levels for tram tracks, utilities and pedestrians': '一座宽阔的桥，桥下有独立的电车轨道，公用设施和行人',
     'Energized (Stamina +': '精力充沛（耐力+',
@@ -1698,7 +1557,6 @@ var cnItems = {
     'here. There is a': '这里。有一个',
     'A narrow, narrow alley between two regular shacks. Both': '在两个普通棚屋之间的狭窄的小巷。都',
     "Useful for crafting.": "用于制作。",
-    'Some kind of a commercial complex with several narrow passages this way and that. Both': '这种带有某种狭窄通道的商业综合体。 两个都',
     'A space inside the city, hidden in the darkness. There is no': '隐藏在黑暗中的城市内部空间。 没有',
     'A dense passage with barely enough space to walk. You feel your way in the darkness. There is no': '密集的通道，几乎没有足够的空间行走。 你在黑暗中感到自己的方式。 没有',
     'Makes exploration in surrounding sectors easier': '使周边领域的探索更加容易',
@@ -1727,7 +1585,6 @@ var cnItems = {
     'switch-embark': '开关柜',
     'switch-in': '切换营地',
     'Deity:': '神：',
-
     'Elevator (Build': '电梯（建造',
     'enable build greenhouse': '启用温室建设',
     'enable clear toxic waste': '清除有毒废物',
@@ -1741,14 +1598,10 @@ var cnItems = {
     'improved smithy, improved smith, items: pistol': '改良铁匠铺，改良铁匠，物品：手枪',
     'improved storage': '改良存储',
     'Lights out in the city that make exploration less dangerous.': '点亮城市，使探索的危险性降低。',
-    'Camp (level': '营地 (层',
     'empty house': '空房子',
     'GOD': '神',
     'Lights (Level': '灯 (等级',
     'Shrine (Level': '圣地 (等级',
-    'A chaotic square surrounded by utility buildings.': '一个被公用大楼包围的混乱广场。',
-    'A chaotic transport hall littered with debris and electrical wiring.': '混乱的运输大厅里散落着碎片和电线。',
-    'A quiet prison complex littered with debris and research samples': '一个安静的监狱建筑群，到处散落着残骸和研究样本',
     'A spacious sector lined with regular buildings': '一个宽敞的区域，两边排列着普通的建筑物',
     'A square at the base of an enormous pillar supporting the level above': '在一个巨大的柱子底部的一个正方形支撑着上面的层',
     'A square with some broken elevators and unusual utility buildings': '一个有一些坏掉的电梯和不寻常的公用建筑的广场',
@@ -1756,15 +1609,12 @@ var cnItems = {
     'A swarm of pests on the south has been defeated.': '南方的一大群有害生物被打败了。',
     'A wide bridge over the level below with separate levels for tram tracks, utilities and pedestrians.': '一座宽阔的桥，桥下有独立的轨道，公共设施和行人。',
     'A wide fenced terrace attached to a massive tower overlooking the wide streets below': '一个宽阔的有围栏的平台，连接在一座巨大的塔楼上，俯瞰着下面宽阔的街道',
-    'A wide throughfare surrounded by factories.': '被工厂包围的宽广通道。',
     'Apothecary (Level': '药剂师（等级',
     'Beacon (Level': '灯塔 (等级',
     'Beacon (Light +': '灯塔（照明 +',
     'neglected laboratory': '被忽视的实验室',
     'Nearby beacon lights the way.': '附近的灯塔点亮了道路。',
     'Outside the beacon\'s range.': '超出灯塔范围。',
-
-
     'Took apart the robot. Gained 10 metal.': '拆开了机器人。 获得10点金属。',
     'Temple (Level': '寺庙 (等级',
     'Tower block (Level': '塔楼（等级',
@@ -1835,7 +1685,6 @@ var cnItems = {
     "Leather gloves": "皮手套",
     "Leather helmet": "皮头盔",
     "Leather jacket": "皮夹克",
-    "Level 13 (-": "13级（-",
     "Level raid ranger": "等级突袭游侠",
     "lower": "下装",
     "Makes exploration safer and scavenging more effective": "使探索更安全，清除更有效",
@@ -1854,13 +1703,8 @@ var cnItems = {
     "Protects the head from blows and the wind.": "保护头部免受打击和风吹。",
     "meditating": "冥想",
     "Army jacket": "军装夹克",
-    "Busy meditating (": "忙于冥想（",
     "Increase rumour generation and rumours per visit": "增加谣言的产生和每次访问的谣言",
     "This area has beens scavenged clean.": "这个区域已经被清理干净了。",
-    "Type: artefact": "类型：人工制品",
-    "Type: crafting ingredient": "类型：工艺原料",
-    "Type: exploration": "类型：探索",
-    "Upgrade required: Caravans": "需要升级：大篷车",
     "Warm army jacket": "保暖军装外套",
     "A dedicated and trained class of workers for protecting the camp.": "一个专门训练有素的工人阶级来保护营地。",
     "Animal Feed": "动物饲料",
@@ -1922,53 +1766,25 @@ var cnItems = {
     "Level raid danger": "等级突袭危险",
     "Metal Working": "金属加工",
     "Beacon (Light +20, time left": "信标（光+20，剩余时间",
-    "Busy donating (": "忙于捐款（",
     "Donated to the temple.": "捐给寺庙。",
     "donating": "捐赠",
-    "Researched Caravans.": "研究商队。",
-    "Researched Metal Working 2.": "研究金属加工 2。",
-    "Researched Square.": "研究广场。",
-    "Researched Townfire.": "研究镇火。",
     "Fixed up the generator.": "修好了发电机。",
-    "Improved the Apothecary.": "改进了药剂师。",
-    "Improved the Cement mill.": "改进了水泥厂。",
-    "Improved the Fortification.": "改进了防御工事。",
-    "Improved the Inn.": "改进了旅馆。",
-    "Improved the Shrine.": "改进了圣地。",
-    "Improved the Snail farm.": "改进了蜗牛农场。",
-    "Improved the Temple.": "改进了圣殿。",
     "Upgraded the library.": "升级了图书馆。",
     " met when exploring is waiting at the inn.": "在旅馆等候，你探索时发现了他。",
-    "A chaotic square with long-abandoned buildings covered in strange moss": "一片混乱的广场，废弃已久的建筑被奇怪的苔藓覆盖",
-    "A chaotic street beneath a vast building.": "巨大建筑物下的混乱街道。",
-    "A chaotic throughfare surrounded by buildings.": "被建筑物包围的混乱通道。",
-    "A chaotic throughfare with long-abandoned buildings covered in strange moss": "一条杂乱无章的道路，废弃已久的建筑物被奇怪的苔藓覆盖",
-    "A dark slum alley with a few large unidentifiable ruins looming over it.": "一条黑暗的贫民窟小巷，上面隐约可见几座无法辨认的大废墟。",
     "A former industrial complex with a high-security atmosphere lingering from its past.": "旧工业园区，高度安全的气氛从过去遗留下来。",
-    "A narrow street with long-abandoned buildings covered in strange moss. Both": "一条狭窄的街道，废弃已久的建筑物覆盖着奇怪的苔藓。两个都",
-    "A rubble-covered alley surrounded by the crumbling remains of slum buildings.": "一条被瓦砾覆盖的小巷，周围是贫民窟建筑的摇摇欲坠残骸。",
-    "A spacious slum square with a few large unidentifiable ruins looming over it.": "一个宽敞的贫民窟广场，上面隐约可见一些无法辨认的大废墟。",
-    "A spacious square beneath a vast power plant.": "巨大的发电厂下方的宽敞广场。",
     "A throughfare with some stranded benches and small factories": "一条有一些搁浅的长椅和小工厂的通道",
-    "A wide sector surrounded by nondescript factories.": "一个被不起眼的工厂包围的广泛部门。",
-    "A wide square with long-abandoned buildings covered in strange moss.": "一个宽阔的广场，长满了奇怪苔藓的废弃建筑。",
     "camp already built": "营地已经建成",
     "neglected house": "被忽视的房子",
     "Passage to the north-west is blocked by a": "通往西北的通道被一个",
     "? blocks": "? 格",
     "A practical backpack with lots of pockets.": "实用的背包，有很多口袋。",
     "Amount of each resource that can be stored": "每种资源可存储的数量",
-    "attack +": "攻击+",
-    "attack speed-": "攻击速度-",
-    "attack speed+": "攻击速度+",
     "Auto-assigned": "自动分配",
-    "bag size +": "袋子尺寸+",
     "Built colony projects": "建造殖民地项目",
     "Cooldown": "冷却",
     "Current": "当前的",
     "Darkness": "黑暗",
     "Default": "默认",
-    "defence +": "防御+",
     "directions": "方向",
     "download": "下载",
     "Dismantle building": "拆除建筑物",
@@ -2005,14 +1821,11 @@ var cnItems = {
     "shield +": "护盾 +",
     "Study": "学习",
     "Study the records and collect more 线索": "研究记录并收集更多线索",
-    "A chaotic square beneath a vast building.": "一座巨大建筑下的混乱广场。",
     "Already in progress": "已经在进行中",
     "craft": "制作",
     "Found some canned food.": "发现了一些罐头食品。",
-    "A chaotic square beneath a vast building. Both": "一座巨大建筑下的混乱广场。",
     "Augmented Clothing": "增强服装",
     "Automatic Pistols": "自动手枪",
-    "Busy building (": "繁忙的建筑（",
     "Exoskeletons": "外骨骼",
     "Exported.": "已导出。",
     "First Aid Kit": "急救箱",
@@ -2022,22 +1835,15 @@ var cnItems = {
     "This would be a good place for a": "这将是一个好地方",
     "Urban Heliciculture": "城市螺旋栽培",
     "Built a bucket. It will collect water.": "建了一个桶。 它会收集水。",
-    "A chaotic square with long-abandoned buildings covered in strange moss.": "一片混乱的广场，废弃已久的建筑上长满了奇怪的苔藓。",
     "A dark corridor with scattered trash from long-gone inhabitants": "黑暗的走廊里散落着早已消失的居民留下的垃圾",
     "A dark corridor with scattered trash from long-gone inhabitants.": "黑暗的走廊里散落着早已消失的居民留下的垃圾。",
-    "A spacious area beneath a vast structure.": "巨大结构下的宽敞区域。",
-    "A spacious area beneath a vast structure. Both": "巨大结构下的宽敞区域。 两个都",
-    "A wide area beneath a vast structure": "巨大结构下的广阔区域",
-    "A wide area beneath a vast structure.": "巨大建筑下方的广阔区域。",
     "Auto-assigned workers: none": "自动分配的工人：无",
     "Bag full.": "袋子满了。",
     "Bag is too full": "袋子太满了",
     "Build Campfire": "营火",
-    "camp required": "需要露营",
     "Can probably be taken apart for some scrap metal": "可能可以拆开一些废金属",
     "Can't build camp here": "这里不能建立营地",
     "derelict house": "废弃的房子",
-    "Disassemble robot": "拆装机器人",
     "Distance to camp": "到营地的距离",
     "Found an Abandoned robot.": "发现了一个被遗弃的机器人。",
     "in camp | regular": "在营地| 常规的",
@@ -2047,11 +1853,7 @@ var cnItems = {
     "There is a house here that seems worth scouting.": "这里有一栋房子似乎值得考察。",
     "Took apart a robot. Gained 17 metal.": "拆开了一个机器人。 获得 17 金属。",
     "tools -": "工具 -",
-    "Type: consumable": "类型：消耗品",
     "unlocked workers: weaver": "解锁工人：织布工",
-    "A dark alley with long-abandoned buildings covered in strange moss.": "一条黑暗的小巷，废弃已久的建筑上长满了奇怪的苔藓。",
-    "A dark alley with long-abandoned buildings covered in strange moss. Both": "一条黑暗的小巷，废弃已久的建筑上长满了奇怪的苔藓。",
-    "Type: uniqueEquipment": "类型：独特装备",
     "? = unvisited, 0 = visited, X = cleared, C = camp, U = passage up, D = passage down, ! = point of interest": "？ = 未访问过，0 = 已访问过，X = 已清除，C = 营地，U = 向上通道，D = 向下通道，! = 兴趣点",
     "(can collect food": "（可以收集食物",
     "(can collect food, water": "（可以收集食物，水",
@@ -2072,7 +1874,6 @@ var cnItems = {
     "A chaotic square between some shacks": "一些棚屋之间的混乱广场",
     "A chaotic square between some shacks.": "一些棚屋之间的一个混乱的广场。",
     "An inhabitant packed their belongings and left.": "一名居民收拾好行李离开。",
-    "Busy craft (": "繁忙的工艺（",
     "Researched complete": "研究完成",
     "Scouted a hut.": "侦察了一个小屋。",
     "unlocked workers": "解锁工人",
@@ -2101,8 +1902,6 @@ var cnItems = {
     "A square with some broken elevators and small shacks.": "一个广场，有一些破损的电梯和小棚屋。",
     "Use rations": "使用口粮",
     "outer": "外部",
-    "A dark street with long-abandoned buildings covered in strange moss.": "一条黑暗的街道，废弃已久的建筑覆盖着奇怪的苔藓。",
-    "A shabby square with long-abandoned buildings covered in strange moss.": "破旧的广场上，废弃已久的建筑上长满了奇怪的苔藓。",
     "Entering the outskirts.": "进入郊外。",
     "Once crowded shanty town with a few broken elevators and a blocky structure in the middle.": "曾经拥挤的棚户区，有几部坏掉的电梯，中间有一座块状结构。",
     "No longer hungry or thirsty.": "不再饥饿或口渴。",
@@ -2124,9 +1923,6 @@ var cnItems = {
     "Build [Storage]": "建造[仓库]",
     "Build Clinic": "建造诊所",
     "Repair Plastic bag": "修补塑料背包",
-    "1 bucket": "1 桶",
-    "1 trap (can collect water": "1个陷阱（可以收集水",
-    "2x Trading post required": "需要 2x 交易站",
     "A dark alley between two massive apartments": "两间巨大公寓之间的黑暗小巷",
     "A dark alley between two massive apartments.": "两间巨大公寓之间的黑暗小巷。",
     "A safe place that several people call home and is starting to accumualate some resources.": "一个安全的地方，几个人称之为家，并开始积累一些资源。",
@@ -2145,18 +1941,10 @@ var cnItems = {
     "Unlocked upgrades": "解锁升级",
     "Found a source of plastic bottle.": "找到了塑料瓶的来源。",
     "Went scavenging. Found a source of plastic bottle.": "去拾荒了。 发现塑料瓶的来源。",
-    "A cluttered street with long-abandoned buildings covered in strange moss.": "一条杂乱的街道，废弃已久的建筑覆盖着奇怪的苔藓。",
     "A dark corridor with scattered trash from long-gone inhabitants. There is a": "黑暗的走廊里散落着早已消失的居民留下的垃圾。 有一个",
     "A dark passage lined with immense storehouses.": "一条黑暗的通道，两旁都是巨大的仓库。",
-    "A dark slum alley with a few large unidentifiable ruins looming over it": "一条黑暗的贫民窟小巷，上面隐约可见一些巨大的无法辨认的废墟",
-    "A gloomy hall surrounded by residential towers": "一座被住宅楼环绕的阴暗大厅",
-    "A gloomy hall surrounded by residential towers.": "一座被住宅楼环绕的阴暗大厅。",
-    "A gloomy slum alley with a few large unidentifiable ruins looming over it. There is a": "一条阴沉的贫民窟小巷，上方耸立着几处难以辨认的大型废墟。这里有一个",
     "A dark street between some residential towers.": "一些住宅楼之间的一条黑暗的街道。",
-    "A dark street with long-abandoned buildings covered in strange moss": "一条黑暗的街道，废弃已久的建筑覆盖着奇怪的苔藓",
     "A square built around a massive statue with typical shop fronts surrounding it on every side": "一座围绕巨大雕像建起的广场，四周是普通商铺门面",
-    "A rubble-covered alley surrounded by the crumbling remains of industrial buildings. The area is swathed in relentless": "一条被瓦砾覆盖的小巷，四周是正在坍塌的工业建筑残骸。该区域笼罩在无情的",
-    "Undefined industrial alley": "未定型的工业小巷",
     "Once crowded shanty town with a few broken elevators and a massive structure in the middle": "曾经拥挤的棚户区，中间有几部损坏的电梯和一座巨大的建筑",
     "They call this place Bone Crossing.": "他们把这个地方叫作“骨交叉”。",
     "A narrow alley between two typical shacks.": "两间典型棚屋之间的狭窄小巷。",
@@ -2173,22 +1961,14 @@ var cnItems = {
     "A dark alley behind a maintenace hub, the low ceiling criss-crossed by old wires and ducts": "一条黑暗的小巷位于维护枢纽后方，低矮天花板上交错着老旧电线和管道",
     "A desolate passage criss-crossed with the remains of broken cable systems and maintenance ducts": "一条荒凉的通道里交错着破损电缆系统和维修管道的残骸",
     "A desolate passage criss-crossed with the remains of broken cable systems and maintenance ducts.": "一条荒凉的通道里交错着破损电缆系统和维修管道的残骸。",
-    "A gloomy slum alley with a few large unidentifiable ruins looming over it.": "一条阴沉的贫民窟小巷，上方耸立着几处难以辨认的大型废墟。",
-    "A gloomy slum alley with a few large unidentifiable ruins looming over it. Both": "一条阴沉的贫民窟小巷，上方耸立着几处难以辨认的大型废墟。两侧",
     "An alley with multiple levels of passages crawling along the walls of the surrounding maintenance buildings": "一条小巷中有多层通道沿着周围维护建筑的墙面蜿蜒延伸",
     "An alley with multiple levels of passages crawling along the walls of the surrounding maintenance buildings.": "一条小巷中有多层通道沿着周围维护建筑的墙面蜿蜒延伸。",
-    "A dark alley beneath a vast department store": "一条黑暗的小巷，位于一座巨大的百货商店下方",
-    "A dark alley beneath a vast maintenace hub.": "一条黑暗的小巷，位于巨大的维护枢纽下方。",
-    "A dark area beneath a vast structure": "巨大结构下方的一片黑暗区域",
-    "A dark area beneath a vast structure. Both": "巨大结构下方的一片黑暗区域。两侧",
     "A dark bridge over the level below with separate levels for tram tracks, utilities and pedestrians. Both": "下方楼层上方有一座黑暗的桥梁，分层用于电车轨道、市政设施和行人。两侧",
     "A dark hall lined with colossal shops": "一条黑暗的大厅，两侧排列着巨型商铺",
     "A dark hall lined with colossal shops.": "一条黑暗的大厅，两侧排列着巨型商铺。",
     "A dark passage surrounded (and in parts, covered) by sketchy dwellings that have been abandoned for some time": "一条黑暗的通道，被破败且废弃已久的住宅环绕（部分区域被覆盖）",
     "A dark passage surrounded (and in parts, covered) by sketchy dwellings that have been abandoned for some time.": "一条黑暗的通道，被破败且废弃已久的住宅环绕（部分区域被覆盖）。",
-    "A gloomy alley with long-abandoned buildings covered in strange moss": "一条阴暗的小巷，久已废弃的建筑上长满了奇异苔藓",
     "A narrow alley between two typical shacks. Both": "两间典型棚屋之间的狭窄小巷。两侧",
-    "A shadowy slum alley with a few large unidentifiable ruins looming over it": "一条阴影笼罩的贫民窟小巷，上方隐约耸立着几处无法辨认的大型废墟",
     "A wide area between some public buildings": "一些公共建筑之间的一片宽阔区域",
     "An ordinary square lined with small buildings": "一片普通广场，周围排列着小型建筑",
     "Build [Square]": "建造 [广场]",
@@ -2206,7 +1986,6 @@ var cnItems = {
     "There aren't any signs of recent human": "没有任何近期人类活动迹象",
     "This level is uninhabited. There are still some unvisited streets.": "该楼层无人居住。仍有一些街道尚未探索。",
     "Weak and exhausted, you sit to rest. Your consciousness fades.": "虚弱而精疲力尽的你坐下休息。你的意识逐渐消退。",
-    "Trap required": "需要陷阱",
     "Use kit": "使用工具包",
     "and an arrow pointing south-west": "以及一个指向西南方的箭头",
     "and an arrow pointing south-west.": "以及一个指向西南方的箭头。",
@@ -2223,18 +2002,13 @@ var cnItems = {
     "Some sort of a slum corridor between two vast huts with barely enough space to walk.": "两座巨大小屋之间的某种贫民窟走廊，几乎没有足够的空间可供行走。",
     "Some sort of an industrial corridor between two vast workshops with barely enough space to walk.": "两个巨大车间之间的某种工业走廊，几乎没有足够的空间可供行走。",
     "A former shanty town with a crowded atmosphere lingering from its past.": "一个曾经的棚户区，充满了过去拥挤的气氛。",
-    "A narrow street with long-abandoned buildings covered in strange moss": "狭窄的街道上，废弃已久的建筑长满了奇怪的苔藓",
     "A swarm of pests to the west has been defeated.": "西边的一大群有害生物已经被击败。",
     "grey slug": "灰色蛞蝓",
     "here (15). A swarm of pests to the east has been defeated.": "这里（15）。 东部的一大群有害生物已被击败。",
     "Passage to the south-east is blocked by a": "向东南方向的通道被",
     "wild dog": "野狗",
-    "A chaotic square with long-abandoned buildings covered in strange moss. Both": "一片混乱的广场，废弃已久的建筑上长满了奇怪的苔藓。 两个都",
-    "A chaotic street with long-abandoned buildings covered in strange moss": "一条混乱的街道，废弃已久的建筑覆盖着奇怪的青苔",
     "A dark street between some workshops": "一些作坊之间的黑暗街道",
-    "A shabby square with long-abandoned buildings covered in strange moss": "破旧的广场，废弃已久的建筑长满了奇怪的青苔",
     "A slum passage with a few blocky huts.": "一条贫民窟通道，有几间小木屋。",
-    "A spacious area beneath a vast structure": "巨大结构下的宽敞区域",
     "A spacious bridge over the level below with separate levels for tram tracks, utilities and pedestrians": "下层上方有一座宽敞的桥梁，有单独的楼层供电车轨道，公用设施和行人使用",
     "A square with some broken elevators and typical shacks.": "一个广场，有一些破损的电梯和典型的棚屋。",
     "A swarm of pests to the south-west has been defeated.": "西南方向的一大群有害生物已被击败。",
@@ -2245,7 +2019,6 @@ var cnItems = {
     "Some bricks have been arranged in the shape of an arrow pointing west and a crude symbol that might mean": "有些砖块被排列成指向西方的箭头形状和一个粗略的符号，可能意味着",
     "There is a": "有一个",
     "You spot a few graffiti with arrows pointing south-east and words like 'safe' and 'shelter'.": "你会发现一些涂鸦，上面有指向东南的箭头和“安全”和“庇护所”等字样。",
-    "6 (honey, salt, tea, spices, coffee, chocolate": "6（蜂蜜，盐，茶，香料，咖啡，巧克力",
     "A jar of honey produced by bees in artifical greenhouses, too rare to consume these days. Traders would be interested in it.": "一罐由蜜蜂在人工温室中生产的蜂蜜，现在已经很难食用了。 交易者会对它感兴趣。",
     "A previously unassigned worker has started working as cleric.": "一名先前未分配的工人已开始担任牧师。",
     "A previously unassigned worker has started working as ropemaker.": "一名以前未分配的工人开始担任制绳工。",
@@ -2264,15 +2037,12 @@ var cnItems = {
     "damaged machine": "损坏的机器",
     "Damaged machine": "机器损坏",
     "daylight": "日光",
-    "Disassemble appliance": "拆卸电器",
-    "Disassemble machine": "拆卸机器",
     "Everfire": "永火",
     "followers": "追随者",
     "Gloves made from recycled advanced textiles from before the Fall.": "由秋季之前回收的高级纺织品制成的手套。",
     "Hazard foresight": "危险预见",
     "Houses 8 people.": "可容纳 8 人。",
     "Improved crossbow": "改良弩",
-    "Improved the Smithy.": "改进了铁匠铺。",
     "Increase reputation bonus and meditation success chance": "增加声望奖励和冥想成功率",
     "Increase rumour generation and maximum followers": "增加谣言产生和最大追随者",
     "Jar of honey": "罐蜂蜜",
@@ -2305,7 +2075,6 @@ var cnItems = {
     "Synthetic shirt": "化纤衬衫",
     "The Economy": "经济",
     "Thin rectangular piece of white plastic which used to open doors. Some believe it still holds great power.": "用于开门的薄矩形白色塑料片。 有些人相信它仍然拥有强大的力量。",
-    "Type: trade": "类型：贸易",
     "Wooden toy horse": "木制玩具马",
     "worker resource production: +": "工人资源生产：+",
     "chocolate": "巧克力",
@@ -2481,7 +2250,6 @@ var cnItems = {
     "Water Recycling": "水循环利用",
     "Worker Robots": "工人机器人",
     "studying": "学习中",
-    "Busy studying (": "忙于学习（",
     "Spent some time studying in the library.": "花了一些时间在图书馆学习。",
     "We can now build Shrines to the Spirits.": "我们现在可以为灵魂建造圣地了。",
     "A new civilization born from the ruins of the old one.": "一种新的文明从旧文明的废墟中诞生。",
@@ -2504,9 +2272,6 @@ var cnItems = {
     "Natalia": "娜塔莉亚",
     "Noa": "诺亚",
     "Switch out": "关掉",
-    "Type: explorer": "类型：探险家",
-    "Type: fighter": "类型：战士",
-    "Type: scavenger": "类型：拾荒者",
     "Congratulations! You've completed Level 13.": "恭喜！ 您已通关 13 层。",
     "Thank you for playing all the way to the end. If you'd like to share your thoughts or feedback, you can use any of these channels": "感谢您一直玩到最后。 如果您想分享您的想法或反馈，可以使用以下任何渠道",
     "The Colony Ship launches successfully and heads out into space. Into a new darkness, unimaginably vast.": "殖民船成功发射并驶入太空。 进入一片新的黑暗，广阔得难以想象。",
@@ -2516,11 +2281,8 @@ var cnItems = {
     "1 bucket (can collect food": "1个桶（可以收集食物",
     "A space inside the city, indistinct in the blinding light. The area is swathed in blinding": "城市内部的一个空间，在耀眼的灯光下模糊不清。 该区域被遮蔽所包围",
     "aggressive bots": "攻击性机器人",
-    "aggressive bots and aggressive animals": "攻击性机器人和攻击性动物",
-    "aggressive bots and bandits": "攻击性机器人和强盗",
     "bold bandits": "大胆的强盗",
     "boulevard": "大道",
-    "Busy launch (": "忙于启动（",
     "complex": "复杂的",
     "Deity required.": "需要神灵。",
     "Factory": "工厂",
@@ -2539,18 +2301,11 @@ var cnItems = {
     "sunlit, pollution (": "阳光照射，污染（",
     "This level is on the surface of the City. It has been thoroughly explored.": "这一层位于城市的表面。 对此已经进行了彻底的探索。",
     "water, food": "水，食物",
-    "aggressive animals and aggressive bots": "攻击性动物和攻击性机器人",
-    "aggressive bots and automated structures": "攻击性机器人和自动化结构",
-    "aggressive bots and malevolent creatures": "攻击性机器人和恶意生物",
-    "aggressive bots and urban pests": "攻击性机器人和城市有害生物",
-    "bandits and aggressive bots": "强盗和攻击性机器人",
-    "bandits and malevolent creatures": "强盗和恶毒生物",
     "big turrets": "大炮塔",
     "corridor": "走廊",
     "deformed sewer varanids": "变形的下水道蜥蜴",
     "Highgate (trade partner": "海格特（贸易伙伴",
     "hostile wildlife": "敌对的野生动物",
-    "malevolent creatures and aggressive bots": "恶毒的生物和攻击性的机器人",
     "modified guard bots": "修改后的警卫机器人",
     "passage  down (stairwell) (repaired), old well": "向下通道（楼梯间）（已修复），旧井",
     "Pinewood (trade partner": "松木（贸易伙伴",
@@ -2560,10 +2315,6 @@ var cnItems = {
     "sunlit, cold (": "阳光明媚，寒冷（",
     "sunlit, radioactivity (": "阳光照射，放射性（",
     "This level is polluted. It has been thoroughly explored.": "此级别已被污染。 对此已经进行了彻底的探索。",
-    "urban pests and aggressive animals": "城市有害生物和攻击性动物",
-    "urban pests and aggressive bots": "城市有害生物和攻击性机器人",
-    "urban pests and bandits": "城市有害生物和强盗",
-    "urban pests and malevolent creatures": "城市有害生物和恶意生物",
     "Wolfs": "狼",
     "workshop (cleared": "车间（已清除",
     "A tools trader arrives.": "一位工具商人来了。",
@@ -2594,9 +2345,7 @@ var cnItems = {
     "A big square dominated by an ornate public building in the middle. The area is swathed in relentless": "一个大广场，中间有一座华丽的公共建筑。 该地区正被无情的",
     "A destroyed bridge over the level below with separate levels for tram tracks, utilities and pedestrians. The area is swathed in relentless": "下层上方有一座被毁坏的桥梁，有电车轨道，公用设施和行人分开的楼层。 该地区正被无情的",
     "A destroyed street dotted by billboards and dead screens and surrounded by tall buildings. The area is swathed in relentless": "一条被毁坏的街道上布满了广告牌和死气沉沉的屏幕，周围都是高楼大厦。 该地区正被无情的",
-    "A dignified prison complex littered with debris and trash. The area is swathed in relentless": "庄严的监狱建筑群里散落着瓦砾和垃圾。 该地区正被无情的",
     "A grand bridge over the level below with separate levels for tram tracks, utilities and pedestrians. The area is swathed in relentless": "下层上方有一座宏伟的桥梁，有单独的楼层供电车轨道，公用设施和行人使用。 该地区正被无情的",
-    "A grand square surrounded by buildings. The area is swathed in relentless": "一个宏伟的广场，四周都是建筑物。 该地区正被无情的",
     "A mob of bots to the north has been defeated.": "北方的一群机器人已被击败。",
     "A multi-layered street with space below for trams and below for pedestrians and small shops. The area is swathed in relentless": "多层街道，下方有电车空间，下方有行人和小商店空间。 该地区正被无情的",
     "A public square with a few gloomy buildings. The area is swathed in relentless": "一个公共广场，有几座阴暗的建筑。 该地区正被无情的",
@@ -2605,42 +2354,33 @@ var cnItems = {
     "A spacious area between two buildings with some abandoned residential towers on either side. The area is swathed in relentless": "两座建筑物之间的宽敞区域，两侧有一些废弃的住宅楼。 该地区正被无情的",
     "A spacious bridge over the level below with separate levels for tram tracks, utilities and pedestrians. The area is swathed in relentless": "下层上方有一座宽敞的桥，有单独的楼层供电车轨道，公用设施和行人使用。 该地区正被无情的",
     "A square with some stranded benches and gloomy buildings. The area is swathed in relentless": "广场上有一些搁浅的长凳和阴暗的建筑。 该地区正被无情的",
-    "A sun-swathed street surrounded by typical residential towers. The area is swathed in relentless": "一条阳光普照的街道，周围环绕着典型的住宅楼。 该地区正被无情的",
     "A sunlit street where the wind is constantly howling in the narrow passages. The area is swathed in relentless": "阳光明媚的街道，狭窄的通道里风声不断呼啸。 该地区正被无情的",
     "A toxic waste to the north has been cleared. Debris to the south-west has been cleared away.": "北部的有毒废物已被清除。 西南方向的残骸已被清除。",
     "A wall by a corridor leading south-east has been painted with a big": "通向东南的走廊旁边的墙上画着一个大的",
-    "A wide apartment complex littered with debris and garbage. The area is swathed in relentless": "宽阔的公寓大楼里散落着杂物和垃圾。 该地区正被无情的",
-    "A wide area surrounded by buildings. The area is swathed in relentless": "一片被建筑物包围的广阔区域。 该地区正被无情的",
     "A wide bridge over the level below with separate levels for tram tracks, utilities and pedestrians. The area is swathed in relentless": "下层上方有一座宽桥，有单独的楼层供电车轨道，公用设施和行人使用。 该地区正被无情的",
     "An exposed street flanked by tall buildings and shaken by gusts of strong wind. The area is swathed in relentless": "一条裸露的街道，两侧是高楼大厦，被一阵强风摇晃着。 该地区正被无情的",
-    "An ordinary amusement park littered with debris and trash. The area is swathed in relentless": "一个普通的游乐园，到处都是碎片和垃圾。 该地区正被无情的",
     "An ordinary area between two small buildings. The area is swathed in relentless": "两栋小楼之间的普通区域。 该地区正被无情的",
     "An ordinary bridge over the level below with separate levels for tram tracks, utilities and pedestrians. The area is swathed in relentless": "下层之上的一座普通桥梁，有单独的层用于电车轨道，公用设施和行人。 该地区正被无情的",
     "Arushi: +": "阿鲁什：+",
     "Build [Apothecary]": "建造[药剂师]",
     "Build [Cement mill]": "建造[水泥厂]",
     "Build [Smithy]": "建造[铁匠铺]",
-    "Busy moving (": "忙着搬家（",
     "could be collected here.": "可以在这里收集。",
     "Debris to the north-east has been cleared away.": "东北方向的废墟已被清理干净。",
     "Found an Obsolete computer.": "发现一台过时的计算机。",
     "Obsolete computer": "过时的电脑",
     "outside | surface": "外面| 表面",
     "rainwater": "雨水",
-    "Some kind of a commercial complex with several narrow passages this way and that. The area is swathed in relentless": "某种商业综合体，有几条这样那样的狭窄通道。 该地区正被无情的",
     "symbol.": "象征。",
     "This area is patrolled by aggressive bots.": "该区域由攻击性机器人巡逻。",
     "This area is patrolled by aggressive bots. This place is dangerously": "该区域由攻击性机器人巡逻。 这个地方很危险",
     "This area is patrolled by bold bandits. There is a": "这个地区有大胆的强盗巡逻。 有一个",
     "This area is patrolled by gleaming delivery bots. A radioactive waste to the north has been cleared. A mob of bots to the south has been defeated.": "这个区域由闪闪发光的送货机器人巡逻。 北部的放射性废物已被清除。 南方的一群机器人已被击败。",
     "This place is dangerously": "这个地方很危险",
-    "Disassemble computer": "拆卸计算机",
     "obsolete computer": "过时的电脑",
     "explorer's pants": "探险家的裤子",
-    "Ability: scouring (scavenge cost -": "能力：搜寻（清理成本-",
     "Barracks (Level": "兵营（等级",
     "1 plantations found": "发现 1 个种植园",
-    "A broken street beneath a vast residential tower": "巨大住宅楼下的一条破烂街道",
     "A previously unassigned worker has started working as chemist.": "一名以前未分配的工人已开始担任化学家。",
     "A previously unassigned worker has started working as trapper.": "一名先前未分配的工人已开始担任猎人。",
     "Aqueduct (Level": "渡槽（水平",
@@ -2649,15 +2389,8 @@ var cnItems = {
     "Julia: +": "朱莉娅：+",
     "Transitioning": "过渡",
     "A area where buildings are attached to the ceiling of the level like colossal stalactites.": "建筑物像巨大的钟乳石一样附着在关卡天花板上的区域。",
-    "A damaged street with long-abandoned buildings covered in strange moss. Both": "一条受损的街道，废弃已久的建筑覆盖着奇怪的苔藓。 两个都",
     "A dark street between some residential towers": "一些住宅楼之间的一条黑暗的街道",
-    "A grand area with long-abandoned buildings covered in strange moss": "广阔的区域，废弃已久的建筑覆盖着奇怪的苔藓",
-    "A grand area with long-abandoned buildings covered in strange moss.": "一片广阔的区域，废弃已久的建筑覆盖着奇怪的苔藓。",
     "A low corridor between tall shopping malls, lined with withered trees that until recently must have thrived in artificial light.": "高大购物中心之间的低矮走廊，两旁种满了枯萎的树木，直到最近，这些树木一定在人造光下茁壮成长。",
-    "A modern street surrounded by abandoned residential towers. Both": "一条现代化的街道，周围环绕着废弃的住宅楼。 两个都",
-    "A modern street surrounded by residential towers": "一条现代街道，周围环绕着住宅楼",
-    "A modern street surrounded by residential towers.": "一条现代化的街道，周围环绕着住宅楼。",
-    "A spacious apartment complex littered with debris and garbage": "宽敞的公寓大楼散落着杂物和垃圾",
     "A square built around a massive statue with nondescript shop fronts surrounding it on every side.": "一个围绕着巨大雕像而建的广场，四周都是不起眼的商店门面。",
     "A street at the base of an enormous pillar supporting the level above": "一条街道位于一根巨大的柱子底部，支撑着上面的水平面",
     "A street between some skeleton buildings that seem to have been abandoned while they were still under construction": "一些骨架建筑之间的一条街道，这些建筑在建造过程中似乎已被废弃",
@@ -2666,93 +2399,21 @@ var cnItems = {
     "Back into the darkness.": "回到黑暗中。",
     "empty laboratory": "空实验室",
     "Engulfed by sunlight.": "被阳光吞没。",
-    "Improved the Bucket.": "改进了铲斗。",
     "pristine house": "原始的房子",
     "quiet sewer": "安静的下水道",
     "You lost Augmented (L2).": "你失去了增强型（L2）。",
     "apothecary": "药剂师",
-    "apothecary and cleric": "药剂师和牧师",
-    "apothecary, toolsmith, cleric": "药剂师，工具匠，牧师",
-    "apothecary, toolsmith, concrete, +": "药剂师，工具匠，混凝土，+",
     "cleric": "牧师",
     "concrete": "具体的",
-    "concrete and cleric": "混凝土和牧师",
-    "concrete, robotmaker, cleric": "混凝土，机器人制造商，牧师",
-    "concrete, robotmaker, scientist, +": "混凝土，机器人制造商，科学家，+",
     "robotmaker": "机器人制造者",
-    "robotmaker and cleric": "机器人制造者和牧师",
-    "robotmaker, scientist, cleric": "机器人制造商，科学家，牧师",
-    "robotmaker, scientist, soldier": "机器人制造商，科学家，士兵",
-    "robotmaker, scientist, soldier, +": "机器人制造商，科学家，士兵，+",
-    "robotmaker, soldier, cleric": "机器人制造者，士兵，牧师",
     "ropemaker": "制绳工",
-    "ropemaker and cleric": "制绳工和牧师",
-    "ropemaker, apothecary, toolsmith, +": "绳匠，药剂师，工具匠，+",
     "scavenger": "清道夫",
-    "scavenger and cleric": "拾荒者和牧师",
-    "scavenger and concrete": "清除剂和混凝土",
-    "scavenger, apothecary, toolsmith, +": "拾荒者，药剂师，工具匠，+",
-    "scavenger, toolsmith, cleric": "拾荒者，工具匠，牧师",
-    "scavenger, trapper, apothecary, +": "拾荒者，猎人，药剂师，+",
-    "scavenger, trapper, concrete": "拾荒者，猎人，混凝土",
-    "scavenger, trapper, water collector, +": "清道夫，猎人，集水器，+",
-    "scavenger, water collector, apothecary, +": "拾荒者，集水者，药剂师，+",
-    "scavenger, water collector, ropemaker, +": "清道夫，集水器，制绳机，+",
     "scientist": "科学家",
-    "scientist and cleric": "科学家和牧师",
-    "scientist and soldier": "科学家和士兵",
-    "scientist, soldier, cleric": "科学家，士兵，牧师",
     "soldier": "士兵",
-    "soldier and cleric": "士兵和牧师",
-    "toolsmith and cleric": "工具匠和牧师",
-    "toolsmith, concrete, robotmaker, +": "工具匠，混凝土，机器人制造商，+",
     "trapper": "猎人",
-    "trapper and cleric": "猎人和牧师",
-    "trapper, toolsmith, cleric": "猎人，工具匠，牧师",
-    "trapper, water collector, ropemaker, +": "猎人，集水器，制绳机，+",
     "water collector": "集水器",
-    "water collector and cleric": "集水者和牧师",
-    "water collector, apothecary, toolsmith, +": "集水器，药剂师，工具匠，+",
-    "water collector, ropemaker, apothecary, +": "集水器，制绳器，药剂师，+",
-    "water collector, ropemaker, scientist, +": "集水器，制绳工，科学家，+",
-    "water collector, toolsmith, cleric": "集水者，工具匠，牧师",
     "Sunlight not allowed.": "不允许阳光照射。",
-    "A grand area beneath a vast prison. Both": "巨大监狱下方的广阔区域。 两个都",
-    "apothecary and soldier": "药剂师和士兵",
-    "concrete and scientist": "具体和科学家",
-    "concrete and soldier": "混凝土和士兵",
     "none": "没有任何",
-    "ropemaker and apothecary": "制绳师和药剂师",
-    "ropemaker and concrete": "制绳机和混凝土",
-    "ropemaker and scientist": "绳索制造者和科学家",
-    "ropemaker and soldier": "绳匠和士兵",
-    "ropemaker and toolsmith": "制绳工和工具匠",
-    "ropemaker, concrete, scientist": "制绳工、混凝土、科学家",
-    "ropemaker, scientist, cleric": "制绳工、科学家、牧师",
-    "ropemaker, scientist, soldier": "制绳工、科学家、士兵",
-    "ropemaker, scientist, soldier, +": "制绳工、科学家、士兵、+",
-    "ropemaker, toolsmith, cleric": "绳匠、工具匠、牧师",
-    "scavenger and ropemaker": "拾荒者和制绳工",
-    "scavenger and soldier": "拾荒者和士兵",
-    "scavenger and trapper": "拾荒者和捕兽者",
-    "scavenger and water collector": "清除器和集水器",
-    "scavenger, trapper, water collector": "拾荒者、捕集者、集水者",
-    "toolsmith and soldier": "工具匠和士兵",
-    "toolsmith, concrete, scientist": "工具匠、混凝土、科学家",
-    "trapper and apothecary": "捕手和药剂师",
-    "trapper and concrete": "捕集器和混凝土",
-    "trapper and ropemaker": "捕手和绳索制造者",
-    "trapper and scientist": "捕猎者和科学家",
-    "trapper and soldier": "捕手和士兵",
-    "trapper and toolsmith": "捕手和工具匠",
-    "trapper and water collector": "捕集器和集水器",
-    "trapper, ropemaker, apothecary": "捕手、制绳师、药剂师",
-    "water collector and apothecary": "集水器和药剂师",
-    "water collector and concrete": "集水器和混凝土",
-    "water collector and ropemaker": "集水器和制绳机",
-    "water collector and scientist": "集水者和科学家",
-    "water collector and soldier": "收集水者和士兵",
-    "water collector and toolsmith": "集水者和工具匠",
 
     //原样
     's': '',
@@ -2795,7 +2456,6 @@ var cnItems = {
     'A wide area between some public buildings': '一些公共建筑之间的一片宽阔区域',
     'An alley with multiple levels of passages crawling along the walls of the surrounding maintenance buildings': '一条小巷中有多层通道沿着周围维护建筑的墙面蜿蜒延伸',
     'Once crowded shanty town with a few broken elevators and a blocky structure in the middle': '曾经拥挤的棚户区，中间有几部损坏的电梯和一座方块状建筑',
-    'Some kind of a slum complex with several narrow passages this way and that': '某种贫民窟建筑群，四处有几条狭窄通道',
     'This area is infested with urban pests': '该区域有害生物肆虐',
     'This area is occupied by urban pests and aggressive bots': '该区域被城市有害生物和侵略性机器人占据',
     'You have not scouted this sector yet': '你还没有侦察过这个区域',
@@ -2821,7 +2481,6 @@ var cnItems = {
     'Jumbo backpack': '特大背包',
     'Map sketch': '地图草图',
     'map sketch': '地图草图',
-    'Researched Fortifications.': '研究了防御工事。',
     'Resources remaining': '剩余资源',
     'Scouted a camp.': '侦察了一处营地。',
     'Scouted a station.': '侦察了一处车站。',
@@ -2838,6 +2497,7 @@ var cnItems = {
 
     // 第六批新词条
     'clear toxic waste': '清除有毒废物',
+    'clear radioactive waste': '清除放射性废物',
     'evidence': '线索',
     'new actions': '新行动',
     'poison dart': '毒镖',
@@ -2853,7 +2513,6 @@ var cnItems = {
     'Maximum followers recruited': '已招募最多追随者',
     'met while exploring': '探索时相遇',
     'Noor': 'Noor',
-    'Researched Hazard Management 1.': '研究了危害管理 1。',
 };
 
 
@@ -2904,8 +2563,6 @@ var cnExcludeWhole = [
     /^\s*\(\d+\)\s*$/,
     /^\s*\(level\s*$/,
     /^\s*already built\s*$/,
-    /^\s*and\s*$/,
-    /^\s*at \d+[NSEW]\s*$/,
     /^\s*can be collected here\. There is a\s*$/,
     /^\s*here\.\s*$/,
     /^\s*here\. Both\s*$/,
@@ -2970,6 +2627,7 @@ var cnExcludeWhole = [
 var cnExcludePostfix = [
     /:?\s*x?\d+(\.\d+)?(e[+\-]?\d+)?\s*$/, //12.34e+4
     /:?\s*x?\d+(\.\d+)?[A-Za-z]{0,2}$/, //: 12.34K, x1.5
+    /\s+[+\-]\d+(\.\d+)?%?$/, // +1.1, -15%
 ]
 
 var translateEquipmentName = function(name) {
@@ -3018,7 +2676,10 @@ var itemPropMap = {
 var itemTypeMap = {
     'bag': '背包', 'clothing': '衣物', 'light': '光源', 'weapon': '武器',
     'shoes': '鞋子', 'consumable': '消耗品', 'crafting ingredient': '制作材料',
-    'exploration': '探索', 'artefact': '人工制品'
+    'exploration': '探索', 'artefact': '人工制品', 'ingredient': '原料',
+    'uniqueequipment': '特殊装备',
+    // 跟随者类型
+    'trade': '贸易', 'explorer': '探险家', 'fighter': '战士', 'scavenger': '拾荒者'
 };
 
 var itemSlotMap = {
@@ -3077,7 +2738,7 @@ var streetAdjMap = {
     'dusty': '尘土飞扬', 'calm': '平静', 'looted': '遭洗劫',
     'ancient': '古老', 'quaint': '古朴', 'dated': '陈旧',
     'dignified': '庄重', 'solemn': '庄严', 'grand': '宏伟',
-    'ordinary': '普通', 'shabby': '破旧'
+    'ordinary': '普通', 'shabby': '破旧', 'undefined': '未定型'
 };
 
 // 方向映射（供状态片段翻译）
@@ -3117,11 +2778,39 @@ var translateStatusFragments = function(rest) {
         if (m) return '通往' + (directionMap[m[1]] || m[1]) + '方的通道被有害生物堵塞。';
         m = frag.match(/^Passage to the (\w+) is blocked by debris\.$/);
         if (m) return '通往' + (directionMap[m[1]] || m[1]) + '方的通道被碎片堵塞。';
+        m = frag.match(/^Debris to the (\w+) has been cleared away\.$/);
+        if (m) return (directionMap[m[1]] || m[1]) + '方的碎片已被清除。';
+        m = frag.match(/^A mob of bots (?:on|to) the (\w+) has been defeated\.$/);
+        if (m) return (directionMap[m[1]] || m[1]) + '方的一群机器人已被击败。';
         return frag;
     }).join('');
 };
 
+var enemyNounMap = {
+    "bandits": "强盗",
+    "aggressive animals": "侵略性动物",
+    "urban pests": "城市有害生物",
+    "malevolent creatures": "凶险生物",
+    "aggressive bots": "攻击性机器人",
+    "automated structures": "自动防御装置",
+};
+
 var cnRegReplace = new Map([
+    // 地图悬浮窗敌人名词组合（如 "urban pests and aggressive bots"）
+    [/^(bandits|aggressive animals|urban pests|malevolent creatures|aggressive bots|automated structures) and (bandits|aggressive animals|urban pests|malevolent creatures|aggressive bots|automated structures)$/, function(m, n1, n2) {
+        return (enemyNounMap[n1] || n1) + '和' + (enemyNounMap[n2] || n2);
+    }],
+    // 突袭通知: "There has been a raid on level N (T ago). We need better defences."
+    [/^There has been a raid on level (\d+) \((.+) ago\)\. We need better defences\.$/, function(m, level, timePart) {
+        var fixedMap = { 'a few seconds': '几秒钟', 'less than a minute': '不到一分钟' };
+        var unitMap = { 'minute': '分钟', 'minutes': '分钟', 'hour': '小时', 'hours': '小时', 'day': '天', 'days': '天', 'month': '个月', 'months': '个月', 'year': '年', 'years': '年' };
+        var zhTime = fixedMap[timePart];
+        if (!zhTime) {
+            var parts = timePart.split(' ');
+            zhTime = parts.length === 2 ? (parts[0] + (unitMap[parts[1]] || parts[1])) : timePart;
+        }
+        return level + '层遭到了一次突袭（' + zhTime + '前）。我们需要更好的防御。';
+    }],
     // 寒冷危害组合：[敌人状态]. It's (quite|very|extremely) [<span>cold</span>]
     // 文本节点末尾有空格（span 前），需精确匹配
     [/^(.+)\. It's (quite|very|extremely) $/, function(m, prefix, level) {
@@ -3145,21 +2834,35 @@ var cnRegReplace = new Map([
     [/^This area is infested with grey slugs\. (.+)$/, function(m, rest) {
         return '该区域灰蛞蝓成灾。' + translateStatusFragments(rest);
     }],
+    // 特殊情况：后接建筑类型span（非状态片段），需独立处理
+    [/^There doesn't seem to be anything hostile around\. This would be a good place for a$/, '周围似乎没有任何敌对生物。这将是一个不错的'],
     [/^There doesn't seem to be anything hostile around\. (.+)$/, function(m, rest) {
         return '周围似乎没有任何敌对生物。' + translateStatusFragments(rest);
     }],
     [/^This area is occupied by urban pests and aggressive bots\. (.+)$/, '该区域被城市有害生物和侵略性机器人占据。$1'],
     
+    // 侦察结果合成句（优先于通用 "There is a" 规则）
+    [/^Scouted the area\.(?: Found a well\.)? There is a (\w+) here that seems worth investigating\.$/, function(m, thing) {
+        var thingMap = {
+            'house':'房子', 'building':'建筑物', 'sewer':'下水道',
+            'camp':'营地', 'well':'水井', 'tower':'塔楼', 'factory':'工厂'
+        };
+        return '侦察该地区。这里有一个' + (thingMap[thing] || cnItems[thing] || thing) + '似乎值得调查。';
+    }],
+
     // 动态翻译 "[location-base]. There is a bit of ..." 组合模板
     [/^(.+)\. There is a bit of (.*)$/, function(match, base, rest) {
-        var zhBase = composedLocationBaseMap[base] || base;
-        return zhBase + '。这里有一点' + rest;
+        var zhBase = composedLocationBaseMap[base] || cnItems[base] || cnItems[base + '.'] || base;
+        // 去除结尾的中文句号（如果 base 已含）
+        if (zhBase.endsWith('。')) zhBase = zhBase.slice(0, -1);
+        return zhBase + '。这里有一点' + (cnItems[rest] || rest);
     }],
 
     // 动态翻译 "[location-base]. It might be worthwhile to install ..." 组合模板
     [/^(.+)\. It might be worthwhile to install (.*)$/, function(match, base, rest) {
-        var zhBase = composedLocationBaseMap[base] || base;
-        return zhBase + '。或许值得在这里布置' + rest;
+        var zhBase = composedLocationBaseMap[base] || cnItems[base] || cnItems[base + '.'] || base;
+        if (zhBase.endsWith('。')) zhBase = zhBase.slice(0, -1);
+        return zhBase + '。或许值得在这里布置' + (cnItems[rest] || rest);
     }],
 
     [/^(.+) can be collected here\. (.+)$/, '$1可在这里收集。$2'],
@@ -3169,15 +2872,15 @@ var cnRegReplace = new Map([
     }],
 
     // 百分比剩余片段：(可选前导空格+左括号)数值% remaining)（带右括号变体）
-	[/^( ?\(?)(\d+)\% remaining\) $/, function(match, prefix, n) {
-		if (prefix === ' (') return ' （' + n + '\% 剩余） ';
-		if (prefix === '(') return '（' + n + '\% 剩余） ';
-		return n + '\% 剩余） ';
+	[/^( ?\(?)(\d+)\% remaining$/, function(match, prefix, n) {
+		if (prefix === ' (') return ' （' + n + '\% 剩余';
+		if (prefix === '(') return '（' + n + '\% 剩余';
+		return n + '\% 剩余';
 	}],
 
     // 通用资源/物品+百分比组合模板
     // 支持：resource (abundance)、resource (??)、裸物品名（如 Spider silk）任意组合，如 metal (scarce), Spider silk (97% remaining) 
-    [/^(.+) \((\d+)\% remaining\) $/, function(match, resourcesPart, remain) {
+    [/^(.+) \((\d+)\% remaining$/, function(match, resourcesPart, remain) {
         var parts = resourcesPart.split(', ');
         var translated = parts.map(function(part) {
             var m = part.match(/^(metal|food|water|rope|fuel|rubber|herbs|medicine|tools|concrete|robots) \((common|scarce|abundant|rare|\?\?)\)$/);
@@ -3187,7 +2890,7 @@ var cnRegReplace = new Map([
             }
             return cnItems[part] || part;
         }).join('，');
-        return translated + '（' + remain + '\% 剩余） ';
+        return translated + '（' + remain + '\% 剩余';
     }],
 
     // 工人/建筑+数量+负速率（负数未被cnExcludePostfix剥离）: "Workers (41): -0.82" → "工人（41）：-0.82"
@@ -3222,8 +2925,11 @@ var cnRegReplace = new Map([
     // 时间到上限（前缀"("和后缀")"已被剥离）: "2h to cap" / "105s to cap" → "2h 到上限"
     [/^(\d+)(h|min|s) to cap$/, '$1$2 到上限'],
 
-    // 时间戳: "3 hours ago" → "3小时前"
-    [/^(\d+) hours? ago$/, '$1小时前'],
+    // 时间戳: "3 hours ago" / "2 days ago" / "15 seconds ago" / "4 minutes ago" → "3小时前"等
+    [/^(\d+) (seconds?|minutes?|hours?|days?|months?|years?) ago$/, function(m, n, unit) {
+        var unitMap = { second:'秒', seconds:'秒', minute:'分钟', minutes:'分钟', hour:'小时', hours:'小时', day:'天', days:'天', month:'个月', months:'个月', year:'年', years:'年' };
+        return n + unitMap[unit] + '前';
+    }],
 
     // 物品计数带名称（末尾")"已被cnPostfix剥离）: "1 (chocolate" → "1 (巧克力"
     [/^(\d+) \((.+)$/, function(m, n, item) {
@@ -3246,56 +2952,32 @@ var cnRegReplace = new Map([
     // 营地层级: "Camp (level" (末尾数字和")"已被剥离) → "营地（第"
     [/^Camp \(level$/, '营地（第'],
 
-    // 攻击力数值（数字已被cnExcludePostfix剥离）: "attack +" → "攻击力 +"
-    [/^attack \+$/, '攻击力 +'],
-
-    // 防御力数值（数字已被cnExcludePostfix剥离）: "defence +" → "防御力 +"
-    [/^defence \+$/, '防御力 +'],
-
-    // 混凝土速率（/s和数字已被剥离）: "concrete +" → "混凝土 +"
-    [/^concrete \+$/, '混凝土 +'],
-
-    // 攻击速度（百分比和数字已被剥离）: "attack speed-" / "attack speed+" → "攻击速度±"
-    [/^attack speed([\+\-])$/, '攻击速度$1'],
-
-    // 背包容量数值（数字已被剥离）: "bag size +" → "背包容量 +"
-    [/^bag size \+$/, '背包容量 +'],
-
-    // 营地防御数值（数字已被剥离）: "camp defence +" → "营地防御 +"
-    [/^camp defence \+$/, '营地防御 +'],
-
-    // 保暖数值（数字已被cnExcludePostfix剥离）: "warmth +" → "保暖 +"
-    [/^warmth \+$/, '保暖 +'],
-
-    // 动态地点描述 "[base]. There is a [x]" → 使用composedLocationBaseMap翻译基础部分
-    [/^(.+)\. There is a (.+)$/, function(match, base, rest) {
-        var zhBase = composedLocationBaseMap[base] || base;
-        return zhBase + '。这里有' + rest;
+    // 合并：各种数值增量（末尾 + ）
+    [/^(attack|defence|concrete|bag size|camp defence|warmth|evidence|max vision|poison prot|radiation prot|sun prot)\s*\+$/, function(m, stat) {
+        var statMap = { 'attack':'攻击力', 'defence':'防御力', 'concrete':'混凝土', 'bag size':'背包容量', 'camp defence':'营地防御', 'warmth':'保暖', 'evidence':'线索', 'max vision':'最大视野', 'poison prot':'污染防护', 'radiation prot':'辐射防护', 'sun prot':'烈日防护' };
+        return statMap[stat] + ' +';
     }],
 
-    // 线索速率: "evidence +" (数字已被cnExcludePostfix剥离) → "线索 +"
-    [/^evidence \+$/, '线索 +'],
+    // 合并：数值增减（末尾 + 或 -）
+    [/^(attack speed|movement cost)\s*([\+\-])$/, function(m, stat, sign) {
+        var statMap = { 'attack speed':'攻击速度', 'movement cost':'移动消耗' };
+        return statMap[stat] + sign;
+    }],
+
+    // 动态地点描述 "[base]. There is a [x]" → 使用composedLocationBaseMap/cnItems翻译基础部分
+    [/^(.+)\. There is a (.+)$/, function(match, base, rest) {
+        var zhBase = composedLocationBaseMap[base] || cnItems[base] || cnItems[base + '.'] || base;
+        if (zhBase.endsWith('。')) zhBase = zhBase.slice(0, -1);
+        return zhBase + '。这里有' + (cnItems[rest] || rest);
+    }],
+
+    // 线索、最大视野、移动消耗、各种防护数值已与上面的 stat + / ± 规则合并
 
     // 层级位置: "at 13W 1N on level" (数字已剥离) → "在13W 1N，第"
     [/^at (\d+[NSEW] \d+[NSEW]) on level$/, '在$1，第'],
 
     // 层级标签: "Level N (-" / "Level N (x" (末尾")"已剥离) → "第N层 ($2"
     [/^Level (\d+) \((.+)$/, '第$1层 ($2'],
-
-    // 最大视野数值（数字已剥离）: "max vision +" → "最大视野 +"
-    [/^max vision \+$/, '最大视野 +'],
-
-    // 移动消耗（数字和%已剥离）: "movement cost +" / "movement cost -" → "移动消耗±"
-    [/^movement cost ([\+\-])$/, '移动消耗$1'],
-
-    // 污染防护数值（数字已剥离）: "poison prot +" → "污染防护 +"
-    [/^poison prot \+$/, '污染防护 +'],
-
-    // 辐射防护数值（数字已剥离）: "radiation prot +" → "辐射防护 +"
-    [/^radiation prot \+$/, '辐射防护 +'],
-
-    // 烈日防护数值（数字已剥离）: "sun prot +" → "烈日防护 +"
-    [/^sun prot \+$/, '烈日防护 +'],
 
     // 位置坐标: "Position: NW NS L" (数字已剥离) → "位置：NW NS 第"
     [/^Position: (\d+[NSEW] \d+[NSEW]) L$/, '位置：$1 第'],
@@ -3321,14 +3003,14 @@ var cnRegReplace = new Map([
 
     // 物品类型描述: "Type: bag  (bag size +30" / "Type: clothing (head)  (defence +" 等
     [/^Type: (.+)$/, function(m, rest) {
-        var m1 = rest.match(/^([a-z]+)\s+\(([a-z ]+)\)\s+\((.*)$/);
+        var m1 = rest.match(/^([a-zA-Z]+)\s+\(([a-z ]+)\)\s+\((.*)$/);
         if (m1) {
-            return '类型：' + (itemTypeMap[m1[1]] || m1[1]) + '（' +
+            return '类型：' + (itemTypeMap[m1[1].toLowerCase()] || m1[1]) + '（' +
                 (itemSlotMap[m1[2].trim()] || m1[2].trim()) + '）（' + translatePropStr(m1[3]);
         }
-        var m2 = rest.match(/^([a-z]+)\s+\((.*)$/);
+        var m2 = rest.match(/^([a-zA-Z]+)\s+\((.*)$/);
         if (m2) {
-            return '类型：' + (itemTypeMap[m2[1]] || m2[1]) + '（' + translatePropStr(m2[2]);
+            return '类型：' + (itemTypeMap[m2[1].toLowerCase()] || m2[1]) + '（' + translatePropStr(m2[2]);
         }
         return '类型：' + (itemTypeMap[rest.trim().toLowerCase()] || rest.trim());
     }],
@@ -3342,11 +3024,11 @@ var cnRegReplace = new Map([
     // 陷阱数量: "1 trap" / "3 traps" → "1个陷阱"
     [/^(\d+) traps?$/, '$1个陷阱'],
 
-    // 分钟前: "4 minutes ago" → "4分钟前"
-    [/^(\d+) minutes? ago$/, '$1分钟前'],
+    // 桶数量: "1 bucket" / "5 buckets" → "1个桶" / "5个桶"
+    [/^(\d+) buckets?$/, '$1个桶'],
 
     // 跟随者角色名称: "explorer Noor" → "探索者Noor"
-    [/^explorer (.+)$/, '探索者$1'],
+    [/^explorer (.+)$/, '探索者 $1'],
 
     // 总跟随者（分母已被cnExcludePostfix剥离）: "Total followers: 1/" → "总跟随者：1/"
     [/^Total followers: (\d+)\/$/, '总跟随者：$1/'],
@@ -3386,6 +3068,225 @@ var cnRegReplace = new Map([
     // getSectorHeader: "[n-street] with camp"（有营地）
     [/^(Alley|Passage|Street|Area|Complex|Sector|Corridor|Square|Plaza|Courtyard|Boulevard|Avenue|Hall|Throughfare|Thoroughfare|Space|Park) with camp$/, function(m, nstreet) {
         return streetTypeMap[nstreet.toLowerCase()] + '（营地）';
+    }],
+
+    // 苔藓废墟描述：A [adj] [noun] with long-abandoned buildings covered in strange moss[suffix]
+    [/^A ([\w-]+) (\w+) with long-abandoned buildings covered in strange moss(\.\.?)?(?: (Both))?$/, function(m, adj, noun, period, both) {
+        var mossAdjMap = { chaotic:'混乱', narrow:'狭窄', wide:'宽阔', spacious:'宽敞', dark:'黑暗', shabby:'破旧', cluttered:'杂乱', gloomy:'阴暗', damaged:'受损', dull:'昏暗', shadowy:'幽暗', grand:'宏阔', strange:'奇特', desolate:'荒凉', dusty:'满是灰尘', calm:'宁静', dated:'陈旧', ancient:'古老', modern:'现代', cold:'寒冷', ruined:'荒废', plain:'普通' };
+        var mossStreetMap = { square:['一个','广场'], throughfare:['一条','通道'], street:['一条','街道'], alley:['一条','小巷'], area:['一片','区域'], hall:['一个','大厅'], boulevard:['一条','林荫道'], avenue:['一条','大道'], complex:['一个','建筑群'], sector:['一个','区域'], corridor:['一条','走廊'], passage:['一条','通道'] };
+        var adjZh = mossAdjMap[adj] || adj;
+        var nounInfo = mossStreetMap[noun] || ['一个', noun];
+        return nounInfo[0] + adjZh + '的' + nounInfo[1] + '，废弃已久的建筑上覆盖着奇怪的苔藓' + (period ? '。' : '') + (both ? ' 两侧都' : '');
+    }],
+
+    // 贫民窟废墟描述：A [adj] slum [noun] with a few large unidentifiable ruins looming over it[suffix]
+    [/^A ([\w-]+) slum (\w+) with a few large unidentifiable ruins looming over it(\.\.?)?(?: (Both|There is a))?$/, function(m, adj, noun, period, suffix) {
+        var ruinsAdjMap = { narrow:'狭窄', dark:'黑暗', spacious:'宽敞', gloomy:'阴暗', shadowy:'幽暗', dull:'昏暗', shabby:'破旧', cluttered:'杂乱', wide:'宽阔', chaotic:'混乱', damaged:'受损' };
+        var ruinsStreetMap = { alley:['一条','小巷'], square:['一个','广场'], street:['一条','街道'], area:['一片','区域'] };
+        var adjZh = ruinsAdjMap[adj] || adj;
+        var nounInfo = ruinsStreetMap[noun] || ['一个', noun];
+        var suffixZh = period ? '。' : '';
+        if (suffix === 'Both') suffixZh += ' 两侧';
+        else if (suffix === 'There is a') suffixZh += ' 这里有一个';
+        return nounInfo[0] + adjZh + '的贫民窟' + nounInfo[1] + '，上方耸立着几处无法辨认的大型废墟' + suffixZh;
+    }],
+
+    // 巨大建筑下方描述：A [adj] [noun] beneath a vast [n-building][suffix]
+    [/^A ([\w-]+) (\w+) beneath a vast (.+?)(\.\.?)?(?: (Both))?$/, function(m, adj, noun, building, period, both) {
+        var adjMap = { cluttered:'杂乱', chaotic:'混乱', spacious:'宽敞', wide:'宽阔', dark:'黑暗', broken:'破损', grand:'宏阔', narrow:'狭窄', gloomy:'阴暗', shabby:'破旧', damaged:'受损', dull:'昏暗', shadowy:'幽暗' };
+        var streetMap = { square:['一个','广场'], street:['一条','街道'], alley:['一条','小巷'], area:['一片','区域'], corridor:['一条','走廊'], throughfare:['一条','通道'], passage:['一条','通道'] };
+        var buildingMap = {
+            'building':'建筑物', 'structure':'构筑物', 'residential tower':'住宅楼', 'apartment house':'公寓楼', 'housing block':'住宅楼群',
+            'power plant':'发电厂', 'factory':'工厂', 'storehouse':'仓库', 'workshop':'工坊',
+            'maintenace hub':'维修中枢', 'cable car station':'缆车站', 'utility building':'公共设施楼', 'water treatment station':'水处理站',
+            'shopping center':'购物中心', 'department store':'百货商店', 'office building':'办公楼', 'cafe':'咖啡厅', 'bar':'酒吧',
+            'library':'图书馆', 'prison':'监狱', 'school':'学校', 'university building':'大学楼',
+            'park':'公园', 'public square':'公共广场', 'sports field':'运动场', 'metro station':'地铁站',
+            'research laboratory':'研究实验室', 'government building':'政府大楼', 'apartment building':'公寓楼',
+            'nuclear power plant':'核电站', 'nuclear waste depot':'核废料仓库', 'nuclear waste processing unit':'核废料处理站',
+            'chemical plant':'化工厂', 'refinery':'炼油厂', 'garbage processing plant':'垃圾处理厂'
+        };
+        var adjZh = adjMap[adj] || adj;
+        var nounInfo = streetMap[noun] || ['一个', noun];
+        var buildingZh = buildingMap[building] || building;
+        return nounInfo[0] + adjZh + '的' + nounInfo[1] + '，位于巨大的' + buildingZh + '下方' + (period ? '。' : '') + (both ? ' 两侧' : '');
+    }],
+
+    // 通道综合体描述：Some kind of a [type] complex with several narrow passages this way and that[suffix]
+    [/^Some kind of a ([\w-]+) complex with several narrow passages this way and that(\.\.?)?(?: (Both|The area is swathed in relentless))?$/, function(m, stype, period, suffix) {
+        var typeMap = { commercial:'商业', residential:'住宅', maintenance:'维修', slum:'贫民窟', public:'公共', industrial:'工业' };
+        var typeZh = typeMap[stype] || stype;
+        var suffixZh = period ? '。' : '';
+        if (suffix === 'Both') suffixZh += ' 两侧';
+        else if (suffix === 'The area is swathed in relentless') suffixZh += ' 该区域笼罩在无情的';
+        return '某种' + typeZh + '综合体，四处有几条狭窄通道' + suffixZh;
+    }],
+
+    // 周围建筑描述：A [adj] [noun] surrounded by [buildings][suffix]
+    [/^A ([\w-]+) (\w+) surrounded by (.+?)(\.\.?)?(?: (Both|There is a|The area is swathed in relentless))?$/, function(m, adj, noun, buildings, period, suffix) {
+        var adjMap = { broken:'破损', chaotic:'混乱', wide:'宽阔', gloomy:'阴暗', grand:'宏阔', modern:'现代', quiet:'安静', low:'低矮', spacious:'宽敞', dark:'黑暗', narrow:'狭窄', damaged:'受损', cluttered:'杂乱', shabby:'破旧', ruined:'荒废', 'sun-swathed':'阳光普照' };
+        var streetMap = { alley:['一条','小巷'], street:['一条','街道'], square:['一个','广场'], area:['一片','区域'], hall:['一个','大厅'], sector:['一片','区域'], throughfare:['一条','通道'], corridor:['一条','走廊'], passage:['一条','通道'], boulevard:['一条','林荫道'], avenue:['一条','大道'] };
+        var buildingMap = {
+            'storehouses':'仓库', 'utility buildings':'公共设施楼', 'factories':'工厂', 'buildings':'建筑物',
+            'residential towers':'住宅楼', 'apartments':'公寓', 'tower blocks':'塔楼群', 'identical residential towers':'相同住宅楼',
+            'workshops':'工坊', 'warehouses':'仓库', 'refineries':'炼油厂',
+            'data centers':'数据中心', 'control rooms':'控制室', 'automated control units':'自动控制单元',
+            'shopping towers':'购物大楼', 'shopping malls':'购物中心', 'shops':'商店', 'stores':'商店',
+            'offices':'办公室', 'office towers':'办公楼', 'public buildings':'公共建筑', 'government buildings':'政府大楼',
+            'crumbling ruins':'残垣断壁', 'shacks':'棚屋', 'huts':'小屋', 'slum residences':'贫民窟建筑', 'apartment buildings':'公寓楼',
+            'abandoned residential towers':'废弃住宅楼', 'abandoned apartments':'废弃公寓',
+            'nondescript factories':'不起眼的工厂', 'typical residential towers':'普通住宅楼',
+            'old factories and industrial buildings':'旧工厂和工业建筑',
+            'crumbling make-shift residential towers that don\'t seem to have ever been connected to the grid':'似乎从未接入电网的摇摇欲坠临时住宅楼',
+            'the crumbling remains of slum buildings':'贫民窟建筑的摇摇欲坠残骸',
+            'the crumbling remains of industrial buildings':'工业建筑的摇摇欲坠残骸'
+        };
+        var adjZh = adjMap[adj] || adj;
+        var nounInfo = streetMap[noun] || ['一个', noun];
+        var buildingZh = buildingMap[buildings] || buildings;
+        var suffixZh = period ? '。' : '';
+        if (suffix === 'Both') suffixZh += ' 两侧';
+        else if (suffix === 'There is a') suffixZh += ' 这里有一个';
+        else if (suffix === 'The area is swathed in relentless') suffixZh += ' 该区域笼罩在无情的';
+        return nounInfo[0] + adjZh + '的' + nounInfo[1] + '，周围环绕着' + buildingZh + suffixZh;
+    }],
+
+    // 散落物描述：A/An [adj] [n-sector] littered with [items] and [items][suffix]
+    [/^An? ([\w-]+) (.+?) littered with (.+?) and (.+?)(\.\.?)?(?: (Both|The area is swathed in relentless))?$/, function(m, adj, sector, item1, item2, period, suffix) {
+        var adjMap = { damaged:'受损', spacious:'宽敞', chaotic:'混乱', quiet:'安静', dignified:'庄严', wide:'宽阔', ordinary:'普通', dark:'黑暗', gloomy:'阴暗', cluttered:'杂乱' };
+        var sectorMap = {
+            'apartment complex':'公寓大楼', 'industrial complex':'工业园区', 'transport hall':'运输大厅',
+            'maintenance area':'维修区', 'transport hub':'运输枢纽', 'shopping mall':'购物中心',
+            'shopping center':'购物中心', 'office complex':'办公建筑群', 'prison complex':'监狱建筑群',
+            'amusement park':'游乐园', 'library':'图书馆', 'park':'公园', 'shanty town':'贫民窟', 'landfill site':'垃圾填埋场'
+        };
+        var itemsMap = {
+            'debris':'碎片', 'garbage':'垃圾', 'broken machinery':'破损机械', 'electrical wiring':'电线',
+            'broken glass':'碎玻璃', 'trash':'垃圾', 'research samples':'研究样本', 'rusted pipes':'生锈管道'
+        };
+        var adjZh = adjMap[adj] || adj;
+        var sectorZh = sectorMap[sector] || sector;
+        var suffixZh = period ? '。' : '';
+        if (suffix === 'Both') suffixZh += ' 两侧';
+        else if (suffix === 'The area is swathed in relentless') suffixZh += ' 该区域笼罩在无情的';
+        return adjZh + '的' + sectorZh + '，散落着' + (itemsMap[item1] || item1) + '和' + (itemsMap[item2] || item2) + suffixZh;
+    }],
+
+    // 研究完成日志: "Researched [Upgrade]." → "研究[译名]。"
+    // 注：若升级名末尾带数字版本号（如 "Hazard Management 1"），先剥离再查字典，最后拼回
+    [/^Researched (.+)\.$/, function(m, name) {
+        var trail = '';
+        var mNum = name.match(/^(.*?)(\s+\d+)$/);
+        if (mNum) { name = mNum[1]; trail = mNum[2]; }
+        var zh = cnItems[name] || cnItems[name.toLowerCase()] || name;
+        return '研究' + zh + trail + '。';
+    }],
+
+    // 改进建筑日志: "Improved the [Building]." → "改进了[译名]。"
+    [/^Improved the (.+)\.$/, function(m, name) {
+        var zh = cnItems[name] || cnItems[name.toLowerCase()] || name;
+        return '改进了' + zh + '。';
+    }],
+
+    // 需求提示: "[Name] required" → "需要[译名]"（特殊例外保留原语序）
+    [/^(.+) required$/, function(m, name) {
+        // 例外：声望/通道/工人 使用特殊语序
+        var exceptions = {
+            'Reputation': '声望需要',
+            'passage': '所需的通道',
+            'workers': '工人需要'
+        };
+        if (exceptions[name]) return exceptions[name];
+        var zh = cnItems[name] || cnItems[name.toLowerCase()] || name;
+        return '需要' + zh;
+    }],
+
+    // 拆卸物品: "Disassemble [Name]" → "拆卸[译名]"
+    [/^Disassemble (.+)$/, function(m, name) {
+        var zh = cnItems[name] || cnItems[name.toLowerCase()] || name;
+        return '拆卸' + zh;
+    }],
+
+    // 蓝图提示（末尾")"已被剥离）: "Blueprint ([Upgrade]" → "蓝图（[译名]"
+    [/^Blueprint \((.+)$/, function(m, name) {
+        var zh = cnItems[name] || cnItems[name.toLowerCase()] || name;
+        return '蓝图（' + zh;
+    }],
+
+    // 忙碌状态（末尾时间和")"已被剥离）: "Busy [verb] (" → "忙于[verb] ("
+    [/^Busy (\w+) \($/, function(m, verb) {
+        var verbMap = {
+            'resting':'休息', 'discussing':'讨论', 'recovering':'恢复', 'visiting':'访问',
+            'meditating':'冥想', 'donating':'捐款', 'building':'建造', 'craft':'工艺',
+            'studying':'学习', 'launch':'启动', 'moving':'移动', 'scouting':'侦察',
+            'fighting':'战斗', 'reading':'阅读', 'sleeping':'睡眠', 'working':'工作'
+        };
+        return '忙于' + (verbMap[verb] || verb) + ' (';
+    }],
+
+    // 物品栏 "|  Get:" / "|  Get ：" 标签（后缀 : / ： 已被剥离，可能残留空格）
+    [/^\|\s+Get\s*$/, '|  得到'],
+
+    // 楼层连接信息：可能是一整句，也可能仅尾部 "N and M at XE YN"（"connecting levels" 已被 cnItems 单独翻译）
+    // 注意 cnExcludePostfix 会把末尾形如 " 0S" 的"空格+数字+字母"剥离，因此只匹配到前一个方向坐标即可，剩下的会自动拼回
+    [/^[Cc]onnecting levels (\d+) and (\d+) at (\d+[NSEW])\s*$/, '连接 $1 层和 $2 层，位于 $3'],
+    [/^(\d+) and (\d+) at (\d+[NSEW])\s*$/, '$1 层和 $2 层，位于 $3'],
+    // UIOutProjectsSystem 把楼层数字包在 <span> 里，会被拆成多个文本节点（"connecting levels "、"12"、" and "、"13"、" at 5E 0S"）。
+    // "connecting levels " 已由 cnItems 翻译为 "连接层"；"12"/"13" 命中 cnExcludeWhole；这里补齐另外两个碎片。
+    [/^and$/, '和'],
+    [/^at (\d+[NSEW])$/, '位于 $1'],
+
+    // 商人买/卖单一资源: "buys: rope" / "sells: metal" / "Buys: rope" / "Sells: metal"
+    [/^(buys|sells|Buys|Sells): (.+)$/, function(m, action, item) {
+        var labelMap = { buys: '收购', sells: '出售', Buys: '收购', Sells: '出售' };
+        var zh = cnItems[item] || cnItems[item.toLowerCase()] || item;
+        return labelMap[action] + '：' + zh;
+    }],
+
+    // 研究/升级完成日志："Researched Hazard Management"（结尾数字已被 cnExcludePostfix 剥离并自动拼回）
+    // 只匹配首字母大写的升级名，避免误伤 "Researched complete" 之类的整句
+    [/^Researched ([A-Z].*)$/, function(m, name) {
+        var zh = cnItems[name] || cnItems[name.charAt(0).toLowerCase() + name.slice(1)] || name;
+        return '已研究 ' + zh;
+    }],
+
+    // 解锁/改进列表（支持单/多标签拼接 + 方括号）：
+    // "unlocked items: knife"
+    // "unlocked camp buildings: [snail farm], unlocked items: smoke bomb"
+    // "unlocked building projects: [staircase down], [staircase up]"
+    // "new actions: repair item"
+    [/^(?:unlocked items|unlocked camp buildings|unlocked building projects|unlocked other buildings|unlocked workers|improved buildings|improved workers|new events|new actions): .+$/, function(match) {
+        var labelMap = {
+            'unlocked items': '已解锁物品',
+            'unlocked camp buildings': '已解锁营地建筑',
+            'unlocked building projects': '已解锁建造项目',
+            'unlocked other buildings': '已解锁其他建筑',
+            'unlocked workers': '已解锁工人',
+            'improved buildings': '已升级建筑',
+            'improved workers': '已升级工人',
+            'new events': '新事件',
+            'new actions': '新动作',
+        };
+        var labels = Object.keys(labelMap).sort(function(a,b){return b.length-a.length;});
+        var labelAlt = labels.join('|');
+        var sep = new RegExp(', (?=(?:' + labelAlt + '): )', 'g');
+        var resolveItem = function(it) {
+            var bracket = it.match(/^\[(.+)\]$/);
+            var name = bracket ? bracket[1] : it;
+            var zh = cnItems[name] || cnItems[name.toLowerCase()];
+            if (!zh) {
+                var cap = name.charAt(0).toUpperCase() + name.slice(1);
+                var capAll = name.replace(/\b\w/g, function(c){return c.toUpperCase();});
+                zh = cnItems[cap] || cnItems[capAll] || name;
+            }
+            return bracket ? '【' + zh + '】' : zh;
+        };
+        return match.split(sep).map(function(chunk) {
+            var m = chunk.match(new RegExp('^(' + labelAlt + '): (.+)$'));
+            if (!m) return chunk;
+            var items = m[2].split(', ').map(resolveItem).join('、');
+            return labelMap[m[1]] + '：' + items;
+        }).join('；');
     }],
 ])
 

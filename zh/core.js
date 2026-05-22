@@ -80,8 +80,25 @@ var cnItem = function (text, node) {
     if (typeof (text) != "string")
         return text;
 	let textori = text;
+    //剥离首尾空白（空格/制表符/换行等），最后拼回，避免空白导致字典/正则匹配失败
+    let leading_ws = "";
+    let trailing_ws = "";
+    {
+        let m = text.match(/^(\s+)([\s\S]*?)(\s*)$/);
+        if (m) {
+            leading_ws = m[1];
+            trailing_ws = m[3];
+            text = m[2];
+        } else {
+            let m2 = text.match(/^([\s\S]*?)(\s+)$/);
+            if (m2) {
+                trailing_ws = m2[2];
+                text = m2[1];
+            }
+        }
+    }
     //处理前缀
-    let text_prefix = "";
+    let text_prefix = leading_ws;
     for (let prefix in cnPrefix) {
         if (text.substr(0, prefix.length) === prefix) {
             text_prefix += cnPrefix[prefix];
@@ -105,6 +122,8 @@ var cnItem = function (text, node) {
             text = text.substr(0, text.length - result[0].length);
         }
     }
+    // 把剥离的尾部空白追加回去
+    text_reg_exclude_postfix = text_reg_exclude_postfix + trailing_ws;
 
     //检验字典是否可存
     if (!cnItems._OTHER_) cnItems._OTHER_ = [];
