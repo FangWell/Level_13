@@ -2513,6 +2513,16 @@ var cnItems = {
     'Maximum followers recruited': '已招募最多追随者',
     'met while exploring': '探索时相遇',
     'Noor': 'Noor',
+
+    // 第八批新词条
+    'sector': '区域',
+    'abandoned market': '废弃集市',
+    'camp already built on level': '该层已有营地',
+    'there are no resources to scavenge here.': '这里没有任何可拾取的资源。',
+    'this area is occupied by urban pests and bandits. It\'s quite': '该区域被城市有害生物和强盗占据。这里相当',
+    'an alley in front of what looks like an silent apartment house.': '一条看似宁静公寓楼前的小巷。',
+    'a dark commercial alley with a few large unidentifiable ruins looming over it.': '一条被几座大型不明废墟笼罩的黑暗商业小巷。',
+    'some sort of a commercial corridor between two vast shopping malls with barely enough space to walk.': '两个大型购物中心之间某种几乎没有步行空间的商业走廊。',
 };
 
 
@@ -3287,6 +3297,39 @@ var cnRegReplace = new Map([
             var items = m[2].split(', ').map(resolveItem).join('、');
             return labelMap[m[1]] + '：' + items;
         }).join('；');
+    }],
+
+    // 第八批：N 线索 (如 "1 evidence")
+    [/^(\d+) evidence$/, '$1 线索'],
+
+    // 发现某处资源来源 (如 "Found a source of spider silk.")
+    [/^[Ff]ound a source of (.+)\.$/, function(m, item) {
+        var zh = cnItems[item] || cnItems[item.charAt(0).toUpperCase() + item.slice(1)] || item;
+        return '发现了一处' + zh + '来源。';
+    }],
+
+    // 去拾荒+发现来源日志 (如 "Went scavenging. Found a source of spider silk.")
+    [/^[Ww]ent scavenging\. [Ff]ound a source of (.+)\.$/, function(m, item) {
+        var zh = cnItems[item] || cnItems[item.charAt(0).toUpperCase() + item.slice(1)] || item;
+        return '去拾荒了。发现了一处' + zh + '来源。';
+    }],
+
+    // 区块物品发现 (如 "Items found: Spider silk")
+    [/^[Ii]tems found: (.+)$/, function(m, item) {
+        var zh = cnItems[item] || cnItems[item.charAt(0).toLowerCase() + item.slice(1)] || item;
+        return '发现物品：' + zh;
+    }],
+
+    // here (N). 区域引用计数 (如 "here (9).")
+    [/^here \((\d+)\)\.$/, '这里（$1）。'],
+
+    // 区块描述 + 陷阱建议 (如 "An alley... It might be worthwhile to install")
+    [/^(.+)\. It might be worthwhile to install$/, function(m, base) {
+        var key = base + '.';
+        var keyLower = key.charAt(0).toLowerCase() + key.slice(1);
+        var zh = cnItems[key] || cnItems[keyLower];
+        if (!zh) return m;
+        return zh.replace(/。$/, '') + '。或许值得在这里布置';
     }],
 ])
 
