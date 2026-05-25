@@ -213,6 +213,11 @@ var cnItems = {
     'Poisoned': '中毒',
     'Encumbered': '负重',
     'Cold': '寒冷',
+    'Tired': '疲倦',
+    'Energized': '充满活力',
+    'Headache': '头痛',
+    'Beacon': '灯塔',
+    'Blessed': '受庇佑',
     'Export': '导出',
     'Export / import save': '导出/导入存档',
     'empty': '空',
@@ -245,6 +250,9 @@ var cnItems = {
     'camel spider':'驼蛛',
     'ratsnake': '鼠蛇',
     'albino salamander': '白化蝾螈',
+    'lesser albino salamander': '小型白化蝾螈',
+    'goshawk': '苍鹰',
+    'flock of pests': '一群有害生物',
     'fire salamander': '火蝾螈',
     'duskboar': '幽暗野猪',
     'rusted guard bot': '生锈的守卫机器人',
@@ -1092,7 +1100,7 @@ var cnItems = {
     'Take selected': '带走所选物品',
     'square with camp': '营地广场',
     'here.': '。',
-    'can be collected here. There is a': '可以在这里收集。这里有一个',
+    'can be collected here. There is a': '。这里有',
     'There doesn\'t seem to be anything hostile around.': '周围似乎没有任何威胁。',
     'already built': '已建',
     'food -': '食物 -',
@@ -1185,7 +1193,7 @@ var cnItems = {
     'W': '西',
     'Found a well.': '找到一口井。',
     'here (1).': '这里 (1).',
-    'here. Both': '这里. 都',
+    'here. Both': '。这里可以同时收集',
     'Nothing left of the opponent.': '对手一无所有。',
     'Scouted the area. Found a well.': '侦察该地区。 找到一口井。',
     'The street is clear.': '这条街已清理。',
@@ -2520,9 +2528,6 @@ var cnItems = {
     'camp already built on level': '该层已有营地',
     'there are no resources to scavenge here.': '这里没有任何可拾取的资源。',
     'this area is occupied by urban pests and bandits. It\'s quite': '该区域被城市有害生物和强盗占据。这里相当',
-    'an alley in front of what looks like an silent apartment house.': '一条看似宁静公寓楼前的小巷。',
-    'a dark commercial alley with a few large unidentifiable ruins looming over it.': '一条被几座大型不明废墟笼罩的黑暗商业小巷。',
-    'some sort of a commercial corridor between two vast shopping malls with barely enough space to walk.': '两个大型购物中心之间某种几乎没有步行空间的商业走廊。',
 };
 
 
@@ -2573,9 +2578,8 @@ var cnExcludeWhole = [
     /^\s*\(\d+\)\s*$/,
     /^\s*\(level\s*$/,
     /^\s*already built\s*$/,
-    /^\s*can be collected here\. There is a\s*$/,
-    /^\s*here\.\s*$/,
-    /^\s*here\. Both\s*$/,
+    // /^\s*can be collected here\. There is a\s*$/, // 改由 cnItems 翻译
+    // /^\s*here\. Both\s*$/, // 改由 cnItems 翻译
     /^\s*\d+x\s*$/,
     /^\s*$/, //纯空格
     /^([\d\.]+):([\d\.]+)$/,
@@ -2773,6 +2777,9 @@ var coldPrefixMap = {
     'This area is occupied by bots and urban pests': '该区域被机器人和城市有害生物占据。',
     'This area is occupied by bots and aggressive animals': '该区域被机器人和攻击性动物占领。',
     'This area is guarded by bots and aggressive animals': '该区域由机器人和攻击性动物把守。',
+    'This area is infested with grey slugs': '该区域灰蛞蝓成灾。',
+    'This area is infested with cockroaches': '该区域蟑螂成灾。',
+    'This area is infested with huge rats': '该区域巨鼠成患。',
 };
 
 // 翻译 PREFIX 后的方向状态片段序列
@@ -2780,18 +2787,18 @@ var translateStatusFragments = function(rest) {
     return rest.split('. ').map(function(p) {
         var frag = p.endsWith('.') ? p : p + '.';
         var m;
-        m = frag.match(/^A (?:group|swarm|pack) of pests on the (\w+) has been defeated\.$/);
-        if (m) return (directionMap[m[1]] || m[1]) + '方的一群有害生物已被击败。';
-        m = frag.match(/^A (?:group|swarm|pack) of pests to the (\w+) has been defeated\.$/);
-        if (m) return (directionMap[m[1]] || m[1]) + '方的一群有害生物已被击败。';
-        m = frag.match(/^Passage to the (\w+) is blocked by a (?:group|swarm|pack) of pests\.$/);
-        if (m) return '通往' + (directionMap[m[1]] || m[1]) + '方的通道被有害生物堵塞。';
-        m = frag.match(/^Passage to the (\w+) is blocked by debris\.$/);
-        if (m) return '通往' + (directionMap[m[1]] || m[1]) + '方的通道被碎片堵塞。';
-        m = frag.match(/^Debris to the (\w+) has been cleared away\.$/);
-        if (m) return (directionMap[m[1]] || m[1]) + '方的碎片已被清除。';
-        m = frag.match(/^A mob of bots (?:on|to) the (\w+) has been defeated\.$/);
-        if (m) return (directionMap[m[1]] || m[1]) + '方的一群机器人已被击败。';
+        m = frag.match(/^A (?:group|swarm|pack|flock) of pests on the ([\w-]+) has been defeated\.$/);
+        if (m) return (directionMapLong[m[1]] || directionMap[m[1]] || m[1]) + '的一群有害生物已被击败。';
+        m = frag.match(/^A (?:group|swarm|pack|flock) of pests to the ([\w-]+) has been defeated\.$/);
+        if (m) return (directionMapLong[m[1]] || directionMap[m[1]] || m[1]) + '的一群有害生物已被击败。';
+        m = frag.match(/^Passage to the ([\w-]+) is blocked by a (?:group|swarm|pack|flock) of pests\.$/);
+        if (m) return '通往' + (directionMapLong[m[1]] || directionMap[m[1]] || m[1]) + '的通道被有害生物堵塞。';
+        m = frag.match(/^Passage to the ([\w-]+) is blocked by debris\.$/);
+        if (m) return '通往' + (directionMapLong[m[1]] || directionMap[m[1]] || m[1]) + '的通道被碎片堵塞。';
+        m = frag.match(/^Debris to the ([\w-]+) has been cleared away\.$/);
+        if (m) return (directionMapLong[m[1]] || directionMap[m[1]] || m[1]) + '的碎片已被清除。';
+        m = frag.match(/^A mob of bots (?:on|to) the ([\w-]+) has been defeated\.$/);
+        if (m) return (directionMapLong[m[1]] || directionMap[m[1]] || m[1]) + '的一群机器人已被击败。';
         return frag;
     }).join('');
 };
@@ -2803,7 +2810,50 @@ var enemyNounMap = {
     "malevolent creatures": "凶险生物",
     "aggressive bots": "攻击性机器人",
     "automated structures": "自动防御装置",
+    // 具名敌人（detailed plural），来自 EnemyData.json，按需补充
+    "grey slugs": "灰蛞蝓",
+    "black slugs": "黑蛞蝓",
+    "huge rats": "巨鼠",
+    "cockroaches": "蟑螂",
+    "thorny bushs": "荆棘灌木",
+    "giant scorpions": "巨型蝎子",
+    "territorial magpies": "领地喜鹊",
+    "magpies": "喜鹊",
+    "goshawks": "苍鹰",
+    "birds": "鸟群",
+    "vicious plants": "凶恶植物",
+    "dangerous fungi": "危险真菌",
+    "hostile wildlife": "敌对野生动物",
+    "wild animals": "野生动物",
+    "animals": "动物",
 };
+
+// 敌人状态动词 → 中文模板（占位 $1 = 敌人名）
+var enemyActiveVerbMap = {
+    "overrun with":   "$1横行",
+    "infested with":  "$1肆虐",
+    "occupied by":    "被$1占据",
+    "guarded by":     "由$1把守",
+    "patrolled by":   "有$1巡逻",
+    "controlled by":  "被$1控制",
+    "covered in":     "布满$1",
+    "blocked by":     "被$1阻挡",
+};
+
+// 通用敌人状态前缀翻译："This area is <verb> <noun>" → 中文（含末尾句号）
+// 若 coldPrefixMap 已有显式覆盖则优先使用，否则按 verb + noun 拼装
+function translateEnemyPrefix(prefix) {
+    if (coldPrefixMap[prefix]) return coldPrefixMap[prefix];
+    var m = prefix.match(/^This area is (overrun with|infested with|occupied by|guarded by|patrolled by|controlled by|covered in|blocked by) (.+)$/);
+    if (m) {
+        var verb = m[1], noun = m[2];
+        var nounZh = enemyNounMap[noun] || enemyNounMap[noun.toLowerCase()]
+            || cnItems[noun] || cnItems[noun.toLowerCase()] || noun;
+        var tpl = enemyActiveVerbMap[verb];
+        if (tpl) return '该区域' + tpl.replace('$1', nounZh) + '。';
+    }
+    return null;
+}
 
 var cnRegReplace = new Map([
     // 地图悬浮窗敌人名词组合（如 "urban pests and aggressive bots"）
@@ -2822,11 +2872,11 @@ var cnRegReplace = new Map([
         return level + '层遭到了一次突袭（' + zhTime + '前）。我们需要更好的防御。';
     }],
     // 寒冷危害组合：[敌人状态]. It's (quite|very|extremely) [<span>cold</span>]
-    // 文本节点末尾有空格（span 前），需精确匹配
-    [/^(.+)\. It's (quite|very|extremely) $/, function(m, prefix, level) {
+    // 注意：cnItem 空白处理会先剥离末尾空格，故此处不含末尾空格
+    [/^(.+)\. It's (quite|very|extremely)$/, function(m, prefix, level) {
         var severityMap = { 'quite': '相当', 'very': '非常', 'extremely': '极其' };
-        var cnPrefix = coldPrefixMap[prefix] || (prefix + '. ');
-        return cnPrefix + severityMap[level];
+        var cnPrefix = translateEnemyPrefix(prefix) || coldPrefixMap[prefix] || (prefix + '. ');
+        return cnPrefix + '这里' + severityMap[level];
     }],
     // PREFIX + 方向状态片段（击败/阻断），使用 translateStatusFragments 动态翻译
     [/^You have not scouted this sector yet\. (.+)$/, function(m, rest) {
@@ -2861,16 +2911,30 @@ var cnRegReplace = new Map([
     }],
 
     // 动态翻译 "[location-base]. There is a bit of ..." 组合模板
-    [/^(.+)\. There is a bit of (.*)$/, function(match, base, rest) {
-        var zhBase = composedLocationBaseMap[base] || cnItems[base] || cnItems[base + '.'] || base;
+    [/^(.+)\. There is a bit of\s*(.*)$/, function(match, base, rest) {
+        var zhBase = composedLocationBaseMap[base] || cnItems[base] || cnItems[base + '.'] || null;
+        if (!zhBase) {
+            try {
+                var t = cnItem(base + '.', {});
+                if (t && t !== base + '.' && /[\u4e00-\u9fff]/.test(t)) zhBase = t;
+            } catch (e) {}
+        }
+        if (!zhBase) zhBase = base;
         // 去除结尾的中文句号（如果 base 已含）
         if (zhBase.endsWith('。')) zhBase = zhBase.slice(0, -1);
         return zhBase + '。这里有一点' + (cnItems[rest] || rest);
     }],
 
     // 动态翻译 "[location-base]. It might be worthwhile to install ..." 组合模板
-    [/^(.+)\. It might be worthwhile to install (.*)$/, function(match, base, rest) {
-        var zhBase = composedLocationBaseMap[base] || cnItems[base] || cnItems[base + '.'] || base;
+    [/^(.+)\. It might be worthwhile to install\s*(.*)$/, function(match, base, rest) {
+        var zhBase = composedLocationBaseMap[base] || cnItems[base] || cnItems[base + '.'] || null;
+        if (!zhBase) {
+            try {
+                var t = cnItem(base + '.', {});
+                if (t && t !== base + '.' && /[\u4e00-\u9fff]/.test(t)) zhBase = t;
+            } catch (e) {}
+        }
+        if (!zhBase) zhBase = base;
         if (zhBase.endsWith('。')) zhBase = zhBase.slice(0, -1);
         return zhBase + '。或许值得在这里布置' + (cnItems[rest] || rest);
     }],
@@ -3001,11 +3065,13 @@ var cnRegReplace = new Map([
     // 发现资源列表（末尾")"已剥离）: "Resources found: food (scarce), metal (common" → "发现资源：..."
     [/^Resources found: (.+)$/, function(m, rest) {
         var parts = rest.split(', ');
-        var translated = parts.map(function(part) {
+        var lastIdx = parts.length - 1;
+        var translated = parts.map(function(part, i) {
             var full = part.match(/^([\w\s]+) \((common|scarce|abundant|rare)\)$/);
             var partial = part.match(/^([\w\s]+) \((common|scarce|abundant|rare)$/);
             if (full) return (cnItems[full[1].trim()] || full[1].trim()) + '（' + (abundanceMap[full[2]] || full[2]) + '）';
-            if (partial) return (cnItems[partial[1].trim()] || partial[1].trim()) + '（' + (abundanceMap[partial[2]] || partial[2]) + '）';
+            // partial：末尾 ")" 已被 cnPostfix 剥离，会自动追加回，因此此处不输出闭合括号
+            if (partial) return (cnItems[partial[1].trim()] || partial[1].trim()) + '（' + (abundanceMap[partial[2]] || partial[2]) + (i === lastIdx ? '' : '）');
             return cnItems[part.trim()] || part;
         }).join('，');
         return '发现资源：' + translated;
@@ -3089,16 +3155,95 @@ var cnRegReplace = new Map([
         return nounInfo[0] + adjZh + '的' + nounInfo[1] + '，废弃已久的建筑上覆盖着奇怪的苔藓' + (period ? '。' : '') + (both ? ' 两侧都' : '');
     }],
 
-    // 贫民窟废墟描述：A [adj] slum [noun] with a few large unidentifiable ruins looming over it[suffix]
-    [/^A ([\w-]+) slum (\w+) with a few large unidentifiable ruins looming over it(\.\.?)?(?: (Both|There is a))?$/, function(m, adj, noun, period, suffix) {
+    // 拥挤建筑描述：A [a-street] [n-street] packed so full with [a-building] [n-buildings] and [an-decos] that there is barely enough space to pass through[.]
+    [/^A ([\w-]+) (\w+) packed so full with ([\w-]+) ([\w ]+?) and ([\w ]+?) that there is barely enough space to pass through(\.\.?)?$/, function(m, aStreet, nStreet, aBuilding, nBuildings, anDecos, period) {
+        var aStreetMap = { chaotic:'混乱', narrow:'狭窄', wide:'宽阔', spacious:'宽敞', dark:'黑暗', shabby:'破旧', cluttered:'杂乱', gloomy:'阴暗', damaged:'受损', dull:'昏暗', shadowy:'幽暗', grand:'宏阔', strange:'奇特', desolate:'荒凉', dusty:'满是灰尘', calm:'宁静', dated:'陈旧', ancient:'古老', modern:'现代', cold:'寒冷', ruined:'荒废', plain:'普通', quiet:'安静', dignified:'庄严', solemn:'肃穆', ordinary:'普通', filthy:'肮脏', dense:'拥挤' };
+        var nStreetMap = { square:['一个','广场'], throughfare:['一条','通道'], thoroughfare:['一条','通道'], street:['一条','街道'], alley:['一条','小巷'], area:['一片','区域'], hall:['一个','大厅'], boulevard:['一条','林荫道'], avenue:['一条','大道'], complex:['一个','建筑群'], sector:['一片','区域'], corridor:['一条','走廊'], passage:['一条','通道'], space:['一片','空间'], plaza:['一个','广场'], courtyard:['一个','庭院'], park:['一座','公园'] };
+        var aBuildingMap = { towering:'高耸的', tall:'高大的', gloomy:'阴暗的', abandoned:'废弃的', nondescript:'不起眼的', small:'小型的', typical:'典型的', monolithic:'巨大的', blocky:'方块状的', massive:'庞大的', colossal:'巨型的', immense:'庞大的', silent:'寂静的', regular:'普通的', enourmous:'巨大的', enormous:'巨大的', symmetrical:'对称的', decommissioned:'已停用的', odd:'古怪的', inaccessible:'难以进入的', empty:'空荡的', deserted:'荒废的', ransacked:'被洗劫的', ensormous:'巨大的', bizarre:'奇特的', dignified:'庄严的', uncanny:'怪异的', sketchy:'简陋的', depressing:'压抑的', dishevelled:'凌乱的' };
+        var nBuildingsMap = { huts:'棚屋', shacks:'棚屋', buildings:'建筑', factories:'工厂', workshops:'作坊', storehouses:'仓库', warehouses:'仓库', refineries:'炼厂', shops:'商店', stores:'商铺', offices:'办公楼', 'shopping towers':'购物大厦', 'shopping malls':'购物中心', 'office towers':'办公大厦', 'public buildings':'公共建筑', 'government buildings':'政府建筑', 'utility buildings':'公用建筑', 'data centers':'数据中心', 'control rooms':'控制室', 'automated control units':'自动控制单元', 'tower blocks':'塔楼群', 'residential towers':'住宅塔楼', 'identical residential towers':'相同的住宅塔楼', apartments:'公寓', 'apartment buildings':'公寓楼', 'slum residences':'贫民住所' };
+        var anDecosMap = { 'stranded benches':'闲置的长椅', 'broken elevators':'损坏的电梯', 'tram tracks':'电车轨道', 'broken pipes':'损坏的管道', 'broken trams':'损坏的电车', 'empty fountains':'空荡的喷泉', 'abandoned stalls':'废弃的摊位', 'withered trees':'枯萎的树木', 'collapsed shacks':'坍塌的棚屋', 'garbage piles':'垃圾堆' };
+        var aStreetZh = aStreetMap[aStreet] || aStreet;
+        var nStreetInfo = nStreetMap[nStreet] || ['一处', nStreet];
+        var aBuildingZh = aBuildingMap[aBuilding] || aBuilding;
+        var nBuildingsZh = nBuildingsMap[nBuildings] || nBuildings;
+        var anDecosZh = anDecosMap[anDecos] || anDecos;
+        return nStreetInfo[0] + aStreetZh + '的' + nStreetInfo[1] + '里挤满了' + aBuildingZh + nBuildingsZh + '和' + anDecosZh + '，几乎没有足够的空间可以通过' + (period ? '。' : '');
+    }],
+
+    // 区域废墟描述：A [adj] [sectortype] [noun] with a few large unidentifiable ruins looming over it[suffix]
+    [/^A ([\w-]+) (commercial|residential|industrial|maintenance|public|slum) (\w+) with a few large unidentifiable ruins looming over it(\.\.?)?(?: (Both|There is a))?$/, function(m, adj, stype, noun, period, suffix) {
         var ruinsAdjMap = { narrow:'狭窄', dark:'黑暗', spacious:'宽敞', gloomy:'阴暗', shadowy:'幽暗', dull:'昏暗', shabby:'破旧', cluttered:'杂乱', wide:'宽阔', chaotic:'混乱', damaged:'受损' };
         var ruinsStreetMap = { alley:['一条','小巷'], square:['一个','广场'], street:['一条','街道'], area:['一片','区域'] };
+        var stypeMap = { commercial:'商业', residential:'住宅', industrial:'工业', maintenance:'维修', public:'公共', slum:'贫民窟' };
         var adjZh = ruinsAdjMap[adj] || adj;
         var nounInfo = ruinsStreetMap[noun] || ['一个', noun];
+        var stypeZh = stypeMap[stype] || stype;
         var suffixZh = period ? '。' : '';
         if (suffix === 'Both') suffixZh += ' 两侧';
         else if (suffix === 'There is a') suffixZh += ' 这里有一个';
-        return nounInfo[0] + adjZh + '的贫民窟' + nounInfo[1] + '，上方耸立着几处无法辨认的大型废墟' + suffixZh;
+        return nounInfo[0] + adjZh + '的' + stypeZh + nounInfo[1] + '，上方耸立着几处无法辨认的大型废墟' + suffixZh;
+    }],
+
+    // 建筑前方描述：[article] [n-street] in front of what looks like [article] [a-building] [n-building][suffix]
+    [/^[Aa]n? (\w+) in front of what looks like an? (.+?)(\.\.?)?(?: (Both|There is a))?$/, function(m, nstreet, buildingPart, period, suffix) {
+        var streetMap = {
+            alley:['一条','小巷'], passage:['一条','通道'], street:['一条','街道'], area:['一片','区域'],
+            complex:['一个','建筑群'], sector:['一片','区段'], corridor:['一条','走廊'], square:['一个','广场'],
+            plaza:['一个','广场'], courtyard:['一个','庭院'], boulevard:['一条','林荫道'], avenue:['一条','大道'],
+            hall:['一个','大厅'], throughfare:['一条','通道'], thoroughfare:['一条','通道'], space:['一片','空间']
+        };
+        var buildingMap = {
+            'residential building with countless of rows of identical balconies':'有无数排相同阳台的住宅楼',
+            'nuclear waste processing unit':'核废料处理站', 'garbage processing plant':'垃圾处理厂',
+            'nuclear power plant':'核电站', 'nuclear waste depot':'核废料仓库',
+            'research laboratory':'研究实验室', 'government building':'政府大楼',
+            'university building':'大学楼', 'apartment building':'公寓楼',
+            'residential tower':'住宅楼', 'apartment house':'公寓楼',
+            'housing block':'住宅楼群', 'water treatment station':'水处理站',
+            'cable car station':'缆车站', 'maintenace hub':'维修中枢',
+            'utility building':'公共设施楼', 'power plant':'发电厂',
+            'shopping center':'购物中心', 'department store':'百货商店',
+            'office building':'办公楼', 'public square':'公共广场',
+            'sports field':'运动场', 'metro station':'地铁站',
+            'chemical plant':'化工厂', 'refinery':'炼油厂',
+            'factory':'工厂', 'storehouse':'仓库', 'workshop':'工坊',
+            'library':'图书馆', 'prison':'监狱', 'school':'学校',
+            'park':'公园', 'cafe':'咖啡厅', 'bar':'酒吧',
+            'structure':'构筑物', 'building':'建筑物'
+        };
+        var adjMap = {
+            'slowly decomposing':'慢慢腐烂', 'long since abandoned':'废弃已久', 'long abandoned':'长期废弃',
+            'hollowed out':'被掏空', 'recently looted':'最近被洗劫', 'well-preserved':'保存完好',
+            silent:'宁静', regular:'普通', enourmous:'巨大', enormous:'巨大', symmetrical:'对称',
+            decommissioned:'停用的', inaccessible:'难以进入', odd:'奇特',
+            empty:'空旷', deserted:'荒废', ransacked:'被洗劫', ensormous:'巨大', bizarre:'奇异',
+            uncanny:'诡异', ruined:'废墟化', skeletal:'只剩骨架', damaged:'受损',
+            decaying:'腐朽', desolate:'荒凉', crumbling:'摇摇欲坠', bleak:'凄凉',
+            modern:'现代', vibrant:'充满活力', sunlit:'阳光明媚',
+            abadoned:'废弃', polluted:'污染', destroyed:'毁坏', unrecognizable:'无法辨认',
+            abandoned:'废弃', ancient:'古老', obsolete:'陈旧', quaint:'古朴',
+            historical:'历史悠久', ornate:'华丽', baroque:'巴洛克',
+            sketchy:'可疑', depressing:'令人沮丧', dishevelled:'破败',
+            towering:'高耸', tall:'高大', gloomy:'阴暗', nondescript:'普通',
+            small:'小', typical:'普通', monolithic:'整体式', blocky:'方块状',
+            massive:'巨大', colossal:'巨型', immense:'庞大'
+        };
+        var nounInfo = streetMap[nstreet] || ['一个', nstreet];
+        var buildingZh = null, adjStr = buildingPart;
+        var bKeys = Object.keys(buildingMap).sort(function(a, b) { return b.length - a.length; });
+        for (var i = 0; i < bKeys.length; i++) {
+            var bk = bKeys[i];
+            if (buildingPart === bk) { buildingZh = buildingMap[bk]; adjStr = ''; break; }
+            if (buildingPart.length > bk.length && buildingPart.slice(-bk.length) === bk && buildingPart[buildingPart.length - bk.length - 1] === ' ') {
+                buildingZh = buildingMap[bk]; adjStr = buildingPart.slice(0, buildingPart.length - bk.length - 1); break;
+            }
+        }
+        if (!buildingZh) { buildingZh = buildingPart; adjStr = ''; }
+        var adjZh = adjStr ? (adjMap[adjStr] || adjStr) : '';
+        var suffixZh = period ? '。' : '';
+        if (suffix === 'Both') suffixZh += ' 两侧';
+        else if (suffix === 'There is a') suffixZh += ' 这里有一个';
+        return nounInfo[0] + '看似' + adjZh + buildingZh + '前的' + nounInfo[1] + suffixZh;
     }],
 
     // 巨大建筑下方描述：A [adj] [noun] beneath a vast [n-building][suffix]
@@ -3132,9 +3277,30 @@ var cnRegReplace = new Map([
         return '某种' + typeZh + '综合体，四处有几条狭窄通道' + suffixZh;
     }],
 
+    // 走廊双建筑描述：Some sort of a [sectortype] corridor between two vast [buildings][suffix]
+    [/^Some sort of an? ([\w-]+) corridor between two vast (.+?) with barely enough space to walk(\.\.?)?(?: (Both|There is a))?$/, function(m, stype, buildings, period, suffix) {
+        var stypeMap = { commercial:'商业', residential:'住宅', industrial:'工业', maintenance:'维修', public:'公共', slum:'贫民窟' };
+        var buildingsMap = {
+            'shopping towers':'购物大楼', 'shopping malls':'购物中心', 'shops':'商店', 'stores':'商铺', 'offices':'办公室', 'office towers':'办公塔楼',
+            'residential towers':'住宅楼', 'apartments':'公寓', 'tower blocks':'塔楼', 'identical residential towers':'相同的住宅楼',
+            'factories':'工厂', 'workshops':'工坊', 'storehouses':'仓库', 'warehouses':'库房', 'refineries':'炼油厂',
+            'utility buildings':'公共设施楼', 'data centers':'数据中心', 'control rooms':'控制室', 'automated control units':'自动化控制装置',
+            'public buildings':'公共建筑', 'government buildings':'政府大楼',
+            'shacks':'破屋', 'huts':'棚屋', 'slum residences':'贫民窟住宅', 'apartment buildings':'公寓楼',
+            "residential towers that don't seem to have ever been connected to the grid":'似乎从未接入电网的住宅楼',
+            'crumbling ruins':'摇摇欲坠的废墟', 'buildings':'建筑物'
+        };
+        var stypeZh = stypeMap[stype] || stype;
+        var buildingsZh = buildingsMap[buildings] || buildings;
+        var suffixZh = period ? '。' : '';
+        if (suffix === 'Both') suffixZh += ' 两个都';
+        else if (suffix === 'There is a') suffixZh += ' 这里有一个';
+        return '两个' + buildingsZh + '之间某种' + stypeZh + '走廊，几乎没有足够的步行空间' + suffixZh;
+    }],
+
     // 周围建筑描述：A [adj] [noun] surrounded by [buildings][suffix]
     [/^A ([\w-]+) (\w+) surrounded by (.+?)(\.\.?)?(?: (Both|There is a|The area is swathed in relentless))?$/, function(m, adj, noun, buildings, period, suffix) {
-        var adjMap = { broken:'破损', chaotic:'混乱', wide:'宽阔', gloomy:'阴暗', grand:'宏阔', modern:'现代', quiet:'安静', low:'低矮', spacious:'宽敞', dark:'黑暗', narrow:'狭窄', damaged:'受损', cluttered:'杂乱', shabby:'破旧', ruined:'荒废', 'sun-swathed':'阳光普照' };
+        var adjMap = { broken:'破损', chaotic:'混乱', wide:'宽阔', gloomy:'阴暗', grand:'宏阔', modern:'现代', quiet:'安静', low:'低矮', spacious:'宽敞', dark:'黑暗', narrow:'狭窄', damaged:'受损', cluttered:'杂乱', shabby:'破旧', ruined:'荒废', 'sun-swathed':'阳光普照', 'rubble-covered':'瓦砾覆盖', crumbling:'摇摇欲坠', desolate:'荒凉', bleak:'凄凉', dazzling:'耀眼', bright:'明亮', dusty:'尘土飞扬', sunlit:'阳光明媚', ancient:'古老', overgrown:'杂草丛生' };
         var streetMap = { alley:['一条','小巷'], street:['一条','街道'], square:['一个','广场'], area:['一片','区域'], hall:['一个','大厅'], sector:['一片','区域'], throughfare:['一条','通道'], corridor:['一条','走廊'], passage:['一条','通道'], boulevard:['一条','林荫道'], avenue:['一条','大道'] };
         var buildingMap = {
             'storehouses':'仓库', 'utility buildings':'公共设施楼', 'factories':'工厂', 'buildings':'建筑物',
@@ -3320,16 +3486,153 @@ var cnRegReplace = new Map([
         return '发现物品：' + zh;
     }],
 
-    // here (N). 区域引用计数 (如 "here (9).")
-    [/^here \((\d+)\)\.$/, '这里（$1）。'],
+    // 物品损坏: "Broke an item (Warm coat)."
+    [/^Broke an item \((.+)\)\.$/, function(m, item) {
+        var zh = cnItems[item] || cnItems[item.charAt(0).toLowerCase() + item.slice(1)] || cnItems[item.charAt(0).toUpperCase() + item.slice(1)] || item;
+        return '物品损坏（' + zh + '）。';
+    }],
+
+    // 探索意外日志: "[intro]. Broke/Lost N item_name[, M item_name2 and K item_name3]."
+    // 例如 "Fell while climbing. Broke 1 warm coat."
+    [/^(Nearly fell into an unexpected crack in the street|Fell through a rotten floor|Dropped an item while climbing a fence|Stumbled on some wrecked pipes|Fell while climbing|Left a bag pocket open and some items fell out|Got spooked of the shadows and ran, leaving some items behind)\. (Broke|Lost) (.+)\.$/,
+    function(m, intro, verb, items) {
+        var introMap = {
+            'Nearly fell into an unexpected crack in the street': '差点掉进街上一道意外的裂缝',
+            'Fell through a rotten floor': '从腐朽的地板上摔了下去',
+            'Dropped an item while climbing a fence': '翻越栅栏时掉落了一件物品',
+            'Stumbled on some wrecked pipes': '被破损的管道绊了一跤',
+            'Fell while climbing': '攀爬时摔倒',
+            'Left a bag pocket open and some items fell out': '背包口袋没合好，一些物品掉了出来',
+            'Got spooked of the shadows and ran, leaving some items behind': '被阴影惊吓而逃，遗落了一些物品',
+        };
+        var verbMap = { 'Broke': '损坏了', 'Lost': '丢失了' };
+        var itemsZh = items.split(/, | and /).map(function(part) {
+            var im = part.match(/^(\d+) (.+)$/);
+            if (im) {
+                var name = im[2];
+                var nameSingular = name.replace(/s$/, '');
+                var zh = cnItems[name] || cnItems[name.charAt(0).toUpperCase() + name.slice(1)]
+                      || cnItems[nameSingular] || cnItems[nameSingular.charAt(0).toUpperCase() + nameSingular.slice(1)]
+                      || name;
+                return im[1] + ' ' + zh;
+            }
+            return part;
+        }).join('、');
+        return (introMap[intro] || intro) + '。' + verbMap[verb] + itemsZh + '。';
+    }],
 
     // 区块描述 + 陷阱建议 (如 "An alley... It might be worthwhile to install")
     [/^(.+)\. It might be worthwhile to install$/, function(m, base) {
         var key = base + '.';
         var keyLower = key.charAt(0).toLowerCase() + key.slice(1);
         var zh = cnItems[key] || cnItems[keyLower];
+        // 字典未命中则尝试正则规则翻译描述句
+        if (!zh) {
+            try {
+                var translated = cnItem(key, {});
+                if (translated && translated !== key && /[\u4e00-\u9fff]/.test(translated)) {
+                    zh = translated;
+                }
+            } catch (e) {}
+        }
         if (!zh) return m;
         return zh.replace(/。$/, '') + '。或许值得在这里布置';
+    }],
+    // here (N). → 寒冷强度标注，前缀已含"这里"，此处只输出数值括号
+    [/^here \((\d+)\)\.$/, '（$1）。'],
+    // here. → 布置陷阱句尾（"traps here."），中文已含位置，此处隐藏
+    [/^here\.$/, ''],
+
+    // ===== 批量补充翻译 =====
+
+    // 物品名 + 属性串：形如 "leather gloves  (defence +2, warmth +3)"
+    // 注：cnPostfix 已剥离末 ")"，cnExcludePostfix 可能进一步剥离末尾数字（如 "warmth +1" → "warmth +"），
+    // 故仅用宽松匹配 + translatePropStr 兜底处理各种残缺形态
+    [/^([A-Za-z][A-Za-z\-]*(?:\s[A-Za-z\-]+)*?)\s{2,}\((.+)$/, function(m, name, props) {
+        var zhName = cnItems[name] || cnItems[name.toLowerCase()] || cnItems[name.charAt(0).toUpperCase() + name.slice(1)] || name;
+        return zhName + '（' + translatePropStr(props);
+    }],
+    // 物品名 + 单个属性（属性串被完全截断），形如 "warm coat  (defence"
+    [/^([A-Za-z][A-Za-z\-]*(?:\s[A-Za-z\-]+)*?)\s{2,}\(([a-z][a-z ]*)$/, function(m, name, prop) {
+        var zhName = cnItems[name] || cnItems[name.toLowerCase()] || cnItems[name.charAt(0).toUpperCase() + name.slice(1)] || name;
+        return zhName + '（' + (itemPropMap[prop] || prop);
+    }],
+    // 物品属性碎片（tooltip 中被空格/换行切分的尾部），如 ", warmth"
+    [/^,\s+([a-z][a-z ]+)$/, function(m, prop) { return '，' + (itemPropMap[prop] || prop); }],
+
+    // 敌人状态条："att: N | def: N | spd: N | hp: N" → cnExcludePostfix 已剥离末尾 ": N"，剩余 "...| hp"
+    [/^att: ([\d.]+) \| def: ([\d.]+) \| spd: ([\d.]+) \| hp$/, '攻击：$1 | 防御：$2 | 速度：$3 | 生命'],
+    // 含 shield 的完整形式："att: N | def: N | spd: N | hp: N | shield" (末尾 shield 后的数字已被剥离)
+    [/^att: ([\d.]+) \| def: ([\d.]+) \| spd: ([\d.]+) \| hp: (\d+) \| shield$/, '攻击：$1 | 防御：$2 | 速度：$3 | 生命：$4 | 护盾'],
+
+    // 战斗进度："Fight N / M"（末尾 " M" 已被 cnExcludePostfix 剥离）
+    [/^Fight (\d+) \/$/, '战斗 $1 /'],
+    // 战斗结果
+    [/^Fight won\.$/, '战斗胜利。'],
+    // 战斗按钮："Fight pests (NE" / "Fight goshawks (NE"（cnPostfix 已剥离末 ")")
+    [/^Fight ([A-Za-z][\w\s]*?)\s\(([NSEW]{1,2})$/, function(m, enemy, dir) {
+        var zh = cnItems[enemy] || cnItems[enemy.toLowerCase()] || enemy;
+        return '与' + zh + '战斗（' + (directionMap[dir] || dir);
+    }],
+
+    // 修理动作："Repair Warm coat"
+    [/^Repair (.+)$/, function(m, item) {
+        var zh = cnItems[item] || cnItems[item.toLowerCase()] || cnItems[item.charAt(0).toUpperCase() + item.slice(1)] || item;
+        return '修理' + zh;
+    }],
+
+    // 状态条 hunger："Hunger (health -N%, time to full: Ns)"，剥离后剩 "Hunger (health -N%, time to full"
+    [/^Hunger \(health -([\d.]+)%, time to full$/, '饥饿（生命值 -$1%，充满时间'],
+
+    // here (N). + 方向状态片段序列
+    [/^here \((\d+)\)\. Passage to the ([\w-]+) is blocked by a$/, function(m, n, dir) {
+        return '这里（' + n + '）。通往' + (directionMapLong[dir] || directionMap[dir] || dir) + '的通道被一群';
+    }],
+    [/^here \((\d+)\)\. (.+)$/, function(m, n, rest) {
+        var translated = translateStatusFragments(rest);
+        return '这里（' + n + '）。' + translated;
+    }],
+    // 前导 ". " 后接已知方向状态片段（如 ". A swarm of pests to the south-west has been defeated."）
+    [/^\.\s+(A (?:group|swarm|pack|flock) of pests (?:on|to) the [\w-]+ has been defeated\..*|Passage to the [\w-]+ is blocked by .+|Debris to the [\w-]+ has been cleared away\..*|A mob of bots (?:on|to) the [\w-]+ has been defeated\..*)$/, function(m, rest) {
+        return '。' + translateStatusFragments(rest);
+    }],
+
+    // 地点描述（独立 sector 描述行，起首大小写均可）
+    // 模板："A completely ruined [a-sectortype] [n-street]"
+    [/^a completely ruined ([\w-]+) ([\w-]+)\.$/i, function(m, stype, nstreet) {
+        var s = sectorTypeMap[stype.toLowerCase()] || stype;
+        var n = streetTypeMap[nstreet.toLowerCase()] || nstreet;
+        return '一条完全毁坏的' + s + n + '。';
+    }],
+    // 模板："[a] [a-street] alley between two [a-building] [n-buildings]"
+    [/^an? ([\w-]+) (alley|passage|street|corridor) between two ([\w-]+) ([\w\s-]+)\.$/i, function(m, sadj, nstreet, badj, nbuildings) {
+        var buildingAdjMap = {
+            'towering':'高耸','tall':'高大','gloomy':'阴暗','abandoned':'废弃','nondescript':'普通',
+            'small':'小型','typical':'普通','monolithic':'整体式','blocky':'方块状','massive':'巨大',
+            'colossal':'巨型','immense':'庞大','silent':'寂静','regular':'普通','enourmous':'巨大',
+            'enormous':'巨大','symmetrical':'对称','decommissioned':'停用','odd':'奇特',
+            'inaccessible':'难以进入','empty':'空荡','deserted':'荒废','ransacked':'被洗劫',
+            'ensormous':'庞大','bizarre':'奇异','uncanny':'诡异','sketchy':'可疑',
+            'depressing':'令人沮丧','dishevelled':'破败','ruined':'破败','skeletal':'只剩骨架',
+            'damaged':'受损','decaying':'腐朽','desolate':'荒凉','slowly decomposing':'缓慢腐朽',
+            'long since abandoned':'废弃已久','crumbling':'摇摇欲坠','bleak':'凄凉',
+            'well-preserved':'保存完好','modern':'现代'
+        };
+        var buildingsMap = {
+            'huts':'小屋','shacks':'棚屋','buildings':'建筑','slum residences':'贫民窟住宅',
+            'apartment buildings':'公寓楼','residential towers':'住宅楼','apartments':'公寓',
+            'tower blocks':'塔楼','factories':'工厂','workshops':'工坊','storehouses':'仓库',
+            'warehouses':'库房','refineries':'炼油厂','utility buildings':'公共设施楼',
+            'data centers':'数据中心','control rooms':'控制室','automated control units':'自动控制单元',
+            'shopping towers':'购物大楼','shopping malls':'购物中心','shops':'商店','stores':'商铺',
+            'offices':'办公室','office towers':'办公塔楼','public buildings':'公共建筑',
+            'government buildings':'政府大楼','crumbling ruins':'残垣断壁'
+        };
+        var sZh = streetAdjMap[sadj.toLowerCase()] || sadj;
+        var nZh = streetTypeMap[nstreet.toLowerCase()] || nstreet;
+        var bZh = buildingAdjMap[badj.toLowerCase()] || badj;
+        var nbZh = buildingsMap[nbuildings.toLowerCase()] || nbuildings;
+        return '两座' + bZh + nbZh + '之间的' + sZh + nZh + '。';
     }],
 ])
 
