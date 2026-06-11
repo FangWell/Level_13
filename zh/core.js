@@ -213,8 +213,20 @@ var cnDebug = {
     getEnabled: function () {
         return !!CNITEM_DEBUG;
     },
+    isStillUntranslated: function (text) {
+        if (!text) return false;
+        var result = cnItem(text, null);
+        return result === text;
+    },
     getOtherTerms: function () {
         if (!cnItems || !cnItems._OTHER_) return [];
+        return cnItems._OTHER_.filter(function (text) {
+            return cnDebug.isStillUntranslated(text);
+        });
+    },
+    pruneOtherTerms: function () {
+        if (!cnItems || !cnItems._OTHER_) return [];
+        cnItems._OTHER_ = this.getOtherTerms();
         return cnItems._OTHER_.slice(0);
     },
     clearOtherTerms: function () {
